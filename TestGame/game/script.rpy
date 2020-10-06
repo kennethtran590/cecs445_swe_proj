@@ -29,10 +29,6 @@ label start:
         xalign 0.0
         yalign 1.0
 
-    show eileen happy:
-        xalign 0.75
-        yalign 1.0
-
     # Start by playing some music.
     play music "illurock.opus"
 
@@ -42,19 +38,25 @@ label start:
 
     # These display lines of dialogue.
 
-    sylvie "First day at the new job I’m so excited to get started."
+    sylvie "First day at the new job! I’m so excited to get started."
 
-    eileen "I’m glad we were able to get hired at the same company sylvie I can't wait for our next project"
+    show eileen happy:
+        xalign 0.75
+        yalign 1.0
+    with Dissolve(0.5)
 
-    sylvie "Did you hear eileen? The company is looking for a new young developer to launch the new project."
+    eileen "I’m glad we were able to get hired at the same company, sylvie. I can't wait for our next project."
+
+    sylvie "Did you hear, eileen? The company is looking for a new young developer to launch the new project."
 
     show eileen concerned
     eileen "Oh no! Here you go again"
 
     show sylvie blue giggle
-    sylvie "That’s right here I go again, I’m taking on “The Big One”"
+    sylvie "That’s right, here I go again. I’m taking on “The Big One”"
 
-    sylvie "It's time to get cracking let's go ahead and see which developers are being assigned to the big one that way we can go ahead and put our team together and get started working"
+    sylvie "It's time to get cracking. let's go ahead and see which developers are being assigned to “The Big One” that
+    way we can go ahead and put our team together and start working"
 
     scene office_background
     show sylvie blue smile
@@ -63,15 +65,17 @@ label start:
     show sylvie blue normal:
         xalign 0.75
         yalign 1.0
+    with Dissolve(0.5)
 
     show eileen vhappy:
         xalign 0.0
         yalign 1.0
+    with Dissolve(0.7)
 
-    eileen "So how are we going to do this?"
+    eileen "So, how are we going to do this?"
 
     show sylvie blue giggle
-    sylvie "Using scrum and agile methodlogy"
+    sylvie "Using scrum and agile methodology"
 
     eileen "Whats that?"
 
@@ -129,5 +133,6 @@ label start:
     eileen "So what will you be doing on a week to week basis?"
 
     #Start tutorial for weekly calendar events
+
 
     return
