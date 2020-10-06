@@ -33,9 +33,6 @@ label start:
         xalign 0.0
         yalign 1.0
 
-    show eileen happy:
-        xalign 0.75
-        yalign 1.0
 
     # Start by playing some music.
     play music "illurock.opus"
@@ -46,6 +43,11 @@ label start:
     # These display lines of dialogue.
 
     sylvie "First day at the new job! I’m so excited to get started."
+
+    show eileen happy:
+        xalign 0.75
+        yalign 1.0
+    with Dissolve(0.5)
 
     eileen "I’m glad we were able to get hired at the same company Sylvie. I can't wait for our next project"
 
@@ -66,10 +68,12 @@ label start:
     show sylvie blue normal:
         xalign 0.75
         yalign 1.0
+    with Dissolve(0.5)
 
     show eileen vhappy:
         xalign 0.0
         yalign 1.0
+    with Dissolve(0.7)
 
     eileen "So how are we going to do this?"
 
