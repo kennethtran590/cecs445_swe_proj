@@ -99,11 +99,11 @@ screen calendar(date_inf):
         xalign 1.0    # Place in the upper-right corner.
         yalign 0.0    #
         xsize 210     # Pixel Size
-        ysize 190     #
+        ysize 200     #
         xmargin .05   # Leave some transparent space around the box.
         ymargin .05   #
         xpadding .15  # Leave some unused space between the box and its contents.
-        ypadding .10  #
+        ypadding .09  #
 
         vbox:  # Arranges the things in it vertically.
             text calendar.string() size 28 xalign 0.5    # Big text with the date in center of the box.
@@ -111,9 +111,11 @@ screen calendar(date_inf):
                 text "Part " + str(calendar.part()) size 10 xalign 0.5
                 text calendar.month() size 10  # Smallish texts with monthname and year in the center of the box.
                 spacing 8 # Makes sure there's a space between the two text-items, so that it doesn't read 'august2014' but 'august 2014'.
-            text "" size 12
+            text "" size 10
             text "Level 1" size 16 xalign 0.5
             text "Exp Points: 0 / 1,000" size 12 xalign 0.5
             text "Technical Skills: 12" size 12 xalign 0.5
             text "Productivity: 13" size 12 xalign 0.5
             text "Stress: 5" size 12 xalign 0.5
+            text "" size 4
+            text "$0" size 14 xalign 0.5

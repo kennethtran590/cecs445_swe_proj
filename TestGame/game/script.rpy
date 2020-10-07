@@ -84,8 +84,8 @@ label start:
 
     show eileen happy
     show sylvie blue normal
-    sylvie "In short, crum refers to a framework that makes for effective collaborations among teams that are working on complex products.
-    Although it is most often used by software development teams, scrum can essentially be beneficial to any team that is working toward a common goal."
+    sylvie "In short, scrum refers to a framework that makes for effective collaborations among teams that are working on complex products.
+    Although it is most often used by software development teams, scrum is beneficial to any team that is working toward a common goal."
 
     sylvie "In particular, scrum is a collection of meetings, roles, and tools
     that work together to help teams to better structure and manage their workload."
@@ -118,10 +118,10 @@ label start:
     show software_team:
     with slowDissolve
 
-    sylvie "The rest of the developers will be the Scrum team. A scrum team
+    sylvie "The rest of the developers will be the scrum team. A scrum team
     is a self-organized group of three to nine individuals who have the business,
     design, analytical, and development skills to carry out the actual work, solve
-    problems, and produce deliverable products. "
+    problems, and produce deliverable products."
 
     scene office_background
     show sylvie blue normal:
