@@ -163,7 +163,7 @@ label tutorial:
     As you advance through the game, you will gain Technical Skill points by researching and correctly answering game questions."
 
     system "Your Productivity Points are how well you are progressing and managing the project as a scrum leader.
-    As you advance through the game, you will gain Productity Points by performing code reviews and supporting your team."
+    As you advance through the game, you will gain Productivity Points by performing code reviews and supporting your team."
 
     system "As every person knows, stress accumulates over the time that you work.
     As you advance through the game, you will generate stress. You will have to manage developing your project and skills while managing your stress as well."
