@@ -141,7 +141,39 @@ label start:
 
 label tutorial:
 
-    system "Start of tutorial"
+    scene office_background
+
+    system "Throughout the game, you will advance week by week."
+
+    system "Each week, you will generate a number and it will be added to your character attributes
+    that you can see on the top right hand corner."
+
+    # Add focus after
+
+    system "The player attributes that you will have in this game are: Level (Exp Points), Technical Skills, Productivity, Stress, and Money."
+
+    system "Throughout the game, there will be checkpoints that will determine if you have the necessary amount of attribute points to advance."
+
+    system "You will have to make sure you are actively gaining and balancing the points in all categories throughout the game."
+
+    system "Your Level acts as your completion progress to your team's software engineering project.
+    As you advance through the game and complete the project, you will gain experience points (Exp Points) and level up."
+
+    system "Your Technical Skill is your knowledge of programming languages and computer science principles needed for software engineering.
+    As you advance through the game, you will gain Technical Skill points by researching and correctly answering game questions."
+
+    system "Your Productivity Points are how well you are progressing and managing the project as a scrum leader.
+    As you advance through the game, you will gain Productity Points by performing code reviews and supporting your team."
+
+    system "As every person knows, stress accumulates over the time that you work.
+    As you advance through the game, you will generate stress. You will have to manage developing your project and skills while managing your stress as well."
+
+    system "Lastly, every 2 weeks, it is payday! You will recieve money for your work that you will be able to use to pay your bills and purchase items."
+
+    system "Here's a tip: The best software engineers are not the ones that are the smartest or busiest.
+    Be sure to try to get the perfect balance between all of your skills!"
+
+    # Add relationships after
 
     jump test_calendar
 
