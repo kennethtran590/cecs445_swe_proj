@@ -1,0 +1,74 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/script.rpy", line 144, in script
+    system "Start of tutorial"
+  File "game/calendar.rpy", line 90, in execute
+    screen calendar(date_inf):
+  File "game/calendar.rpy", line 90, in execute
+    screen calendar(date_inf):
+  File "game/calendar.rpy", line 96, in execute
+    frame:
+  File "game/calendar.rpy", line 106, in execute
+    vbox:  # Arranges the things in it vertically.
+  File "game/calendar.rpy", line 108, in execute
+    hbox xalign 0.5:  # Arranges the things in it horizontically.
+  File "game/calendar.rpy", line 110, in execute
+    text calendar.month() size 12  # Smallish texts with monthname and year in the center of the box.
+Exception: Cannot display None as text.
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "game/script.rpy", line 144, in script
+    system "Start of tutorial"
+  File "C:\Users\steve\OneDrive\Desktop\renpy-7.3.5-sdk\renpy\ast.py", line 708, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "C:\Users\steve\OneDrive\Desktop\renpy-7.3.5-sdk\renpy\exports.py", line 1345, in say
+    who(what, *args, **kwargs)
+  File "C:\Users\steve\OneDrive\Desktop\renpy-7.3.5-sdk\renpy\character.py", line 1142, in __call__
+    self.do_display(who, what, cb_args=self.cb_args, **display_args)
+  File "C:\Users\steve\OneDrive\Desktop\renpy-7.3.5-sdk\renpy\character.py", line 842, in do_display
+    **display_args)
+  File "C:\Users\steve\OneDrive\Desktop\renpy-7.3.5-sdk\renpy\character.py", line 591, in display_say
+    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
+  File "C:\Users\steve\OneDrive\Desktop\renpy-7.3.5-sdk\renpy\ui.py", line 297, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "C:\Users\steve\OneDrive\Desktop\renpy-7.3.5-sdk\renpy\display\core.py", line 2702, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
+  File "C:\Users\steve\OneDrive\Desktop\renpy-7.3.5-sdk\renpy\display\core.py", line 3094, in interact_core
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "C:\Users\steve\OneDrive\Desktop\renpy-7.3.5-sdk\renpy\display\core.py", line 541, in visit_all
+    d.visit_all(callback, seen)
+  File "C:\Users\steve\OneDrive\Desktop\renpy-7.3.5-sdk\renpy\display\core.py", line 541, in visit_all
+    d.visit_all(callback, seen)
+  File "C:\Users\steve\OneDrive\Desktop\renpy-7.3.5-sdk\renpy\display\core.py", line 541, in visit_all
+    d.visit_all(callback, seen)
+  File "C:\Users\steve\OneDrive\Desktop\renpy-7.3.5-sdk\renpy\display\screen.py", line 430, in visit_all
+    callback(self)
+  File "C:\Users\steve\OneDrive\Desktop\renpy-7.3.5-sdk\renpy\display\core.py", line 3094, in <lambda>
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "C:\Users\steve\OneDrive\Desktop\renpy-7.3.5-sdk\renpy\display\screen.py", line 440, in per_interact
+    self.update()
+  File "C:\Users\steve\OneDrive\Desktop\renpy-7.3.5-sdk\renpy\display\screen.py", line 625, in update
+    self.screen.function(**self.scope)
+  File "game/calendar.rpy", line 90, in execute
+    screen calendar(date_inf):
+  File "game/calendar.rpy", line 90, in execute
+    screen calendar(date_inf):
+  File "game/calendar.rpy", line 96, in execute
+    frame:
+  File "game/calendar.rpy", line 106, in execute
+    vbox:  # Arranges the things in it vertically.
+  File "game/calendar.rpy", line 108, in execute
+    hbox xalign 0.5:  # Arranges the things in it horizontically.
+  File "game/calendar.rpy", line 110, in execute
+    text calendar.month() size 12  # Smallish texts with monthname and year in the center of the box.
+  File "C:\Users\steve\OneDrive\Desktop\renpy-7.3.5-sdk\renpy\text\text.py", line 1471, in __init__
+    raise Exception("Cannot display {0!r} as text.".format(i))
+Exception: Cannot display None as text.
+
+Windows-8-6.2.9200
+Ren'Py 7.3.5.606
+TestGame 1.0
+Tue Oct 06 18:44:35 2020

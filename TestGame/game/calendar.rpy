@@ -45,12 +45,40 @@ init python:
             return ("Week " + str(self.week))
 
         def part(self):
-            if (self.week < 15):
+            if (self.week <= 15):
                 return 1
-            if (15 <= self.week <= 30):
+            if (15 < self.week <= 30):
                 return 2
             if (30 < self.week <= 45):
                 return 3
+
+        def month(self):
+            if (self.week < 4):
+                return "January 2020"
+            elif (self.week < 8):
+                return "February 2020"
+            elif (self.week < 12):
+                return "March 2020"
+            elif (self.week < 16):
+                return "April 2020"
+            elif (self.week < 20):
+                return "May 2020"
+            elif (self.week < 24):
+                return "June 2020"
+            elif (self.week < 28):
+                return "July 2020"
+            elif (self.week < 32):
+                return "August 2020"
+            elif (self.week < 36):
+                return "September 2020"
+            elif (self.week < 40):
+                return "October 2020"
+            elif (self.week < 44):
+                return "November 2020"
+            elif (self.week < 46):
+                return "December 2020"
+            else:
+                return "None"
 
         def next(self):
             self.week += 1
@@ -70,20 +98,19 @@ screen calendar(date_inf):
     frame:
         xalign 1.0    # Place in the upper-right corner.
         yalign 0.0    #
-        xsize 230     # Make it 100x100 pixels.
-        ysize 200     #
+        xsize 210     # Pixel Size
+        ysize 190     #
         xmargin .05   # Leave some transparent space around the box.
         ymargin .05   #
         xpadding .15  # Leave some unused space between the box and its contents.
         ypadding .10  #
 
         vbox:  # Arranges the things in it vertically.
-            text calendar.string() size 36 xalign 0.5    # Big text with the date in center of the box.
-            hbox:  # Arranges the things in it horizontically.
-                text "Part " + str(calendar.part()) size 12 xalign 0.5
-                text date_inf["month"] size 12 xalign 0.5  # Smallish texts with monthname and year in the center of the box.
-                text date_inf["year"] size 12 xalign 0.5   # ..and under the date because the hbox is the second item in the vbox.
-                spacing 10 # Makes sure there's a space between the two text-items, so that it doesn't read 'august2014' but 'august 2014'.
+            text calendar.string() size 28 xalign 0.5    # Big text with the date in center of the box.
+            hbox xalign 0.5:  # Arranges the things in it horizontically.
+                text "Part " + str(calendar.part()) size 10 xalign 0.5
+                text calendar.month() size 10  # Smallish texts with monthname and year in the center of the box.
+                spacing 8 # Makes sure there's a space between the two text-items, so that it doesn't read 'august2014' but 'august 2014'.
             text "" size 12
             text "Level 1" size 16 xalign 0.5
             text "Exp Points: 0 / 1,000" size 12 xalign 0.5

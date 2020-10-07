@@ -137,12 +137,18 @@ label start:
 
     #Start tutorial for weekly calendar events
 
-    # $ calendar.next() #Function that moves onto next week
-
     jump tutorial
 
 label tutorial:
 
-    eileen "Start of tutorial"
+    system "Start of tutorial"
 
-    jump start
+    jump test_calendar
+
+label test_calendar:
+
+    system "Week has advanced"
+
+    $ calendar.next() #Function that moves onto next week
+
+    jump tutorial
