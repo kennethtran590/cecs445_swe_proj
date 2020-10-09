@@ -112,10 +112,10 @@ screen calendar(date_inf):
                 text calendar.month() size 10  # Smallish texts with monthname and year in the center of the box.
                 spacing 8 # Makes sure there's a space between the two text-items, so that it doesn't read 'august2014' but 'august 2014'.
             text "" size 10
-            text "Level 1" size 16 xalign 0.5
-            text "Exp Points: 0 / 1,000" size 12 xalign 0.5
-            text "Technical Skills: 12" size 12 xalign 0.5
-            text "Productivity: 13" size 12 xalign 0.5
-            text "Stress: 5" size 12 xalign 0.5
+            text "Level 1" size 16 xalign 0.5 #character.level
+            text "Exp Points: 0 / 1,000" size 12 xalign 0.5 #character.exp.get()
+            text "Technical Skills: 12" size 12 xalign 0.5 #character.skill
+            text "Productivity: 13" size 12 xalign 0.5 #character.product.get()
+            text "Stress: 5" size 12 xalign 0.5 #character.stressLvl.get()
             text "" size 4
             text "$0" size 14 xalign 0.5
