@@ -2,21 +2,10 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 25: expected statement.
-    xalign 0.0
-            ^
-
-File "game/script.rpy", line 26: expected statement.
-    yalign 1.0
-            ^
-
-File "game/script.rpy", line 29: expected statement.
-    xalign 0.75
-            ^
-
-File "game/script.rpy", line 30: expected statement.
-    yalign 1.0
-            ^
+File "game/calendar.rpy", line 96: invalid syntax
+                if(self.week % 2) == 0):
+                                       ^
+    
 
 Ren'Py Version: Ren'Py 7.3.5.606
-Wed Sep 23 11:01:57 2020
+Sat Oct 10 17:24:14 2020

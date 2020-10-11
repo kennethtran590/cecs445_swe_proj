@@ -13,6 +13,8 @@ init python:
     # Also, notably, the local names of the days and months.
     import locale
 
+    import random
+
     # Find out what day it is.
     today = date.today()
 
@@ -82,6 +84,18 @@ init python:
 
         def next(self):
             self.week += 1
+            self.generate_metrics()
+
+        def generate_metrics(self):
+            rangea, rangeb = character.getLevelRange() # Get range of randomly generated number depending on player level
+
+            # Add numbers to character metrics
+            character.exp = character.exp + 200
+            character.stressLvl = character.stressLvl + random.randint(1, 5)
+            character.product= character.product + random.randint(rangea, rangeb)
+            character.skills = character.skills + random.randint(rangea, rangeb)
+            if((self.week % 2) == 0):
+                character.money= character.money + 0
 
     calendar = Calendar()
 
@@ -99,13 +113,14 @@ screen calendar(date_inf):
         xalign 1.0    # Place in the upper-right corner.
         yalign 0.0    #
         xsize 210     # Pixel Size
-        ysize 200     #
+        ysize 220     #
         xmargin .05   # Leave some transparent space around the box.
         ymargin .05   #
         xpadding .15  # Leave some unused space between the box and its contents.
         ypadding .09  #
 
         vbox:  # Arranges the things in it vertically.
+            xalign 0.5
             text calendar.string() size 28 xalign 0.5    # Big text with the date in center of the box.
             hbox xalign 0.5:  # Arranges the things in it horizontically.
                 text "Part " + str(calendar.part()) size 10 xalign 0.5
@@ -113,9 +128,10 @@ screen calendar(date_inf):
                 spacing 8 # Makes sure there's a space between the two text-items, so that it doesn't read 'august2014' but 'august 2014'.
             text "" size 10
             text "Level 1" size 16 xalign 0.5 #character.level
-            text "Exp Points: 0 / 1,000" size 12 xalign 0.5 #character.exp.get()
-            text "Technical Skills: 12" size 12 xalign 0.5 #character.skill
-            text "Productivity: 13" size 12 xalign 0.5 #character.product.get()
-            text "Stress: 5" size 12 xalign 0.5 #character.stressLvl.get()
+            text "Exp Points: " + str(character.exp) + " / 1,000" size 10 xalign 0.5 #character.exp.get()
+            text "Technical Skills: " + str(character.skills) size 12 xalign 0.5 #character.skill
+            text "Productivity: " + str(character.product) size 12 xalign 0.5 #character.product.get()
+            text "Stress: " + str(character.stressLvl) size 12 xalign 0.5 #character.stressLvl.get()
             text "" size 4
-            text "$0" size 14 xalign 0.5
+            text "$" + str(character.money) size 14 xalign 0.5
+            spacing 2

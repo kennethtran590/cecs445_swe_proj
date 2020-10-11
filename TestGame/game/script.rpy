@@ -183,4 +183,12 @@ label test_calendar:
 
     $ calendar.next() #Function that moves onto next week
 
-    jump tutorial
+    jump test_calendar2
+
+label test_calendar2:
+
+    system "Week has advanced"
+
+    $ calendar.next() #Function that moves onto next week
+
+    jump test_calendar
