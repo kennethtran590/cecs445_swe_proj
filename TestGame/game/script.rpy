@@ -9,6 +9,17 @@ define eileen = Character("Eileen")
 
 define system = Character("")
 
+define r = Character("Sylvie")
+define m = Character("Mentor")
+
+image mentor_happy = "KG110001.kg.png"
+image mentor_slight_happy = "KG110002.kg.png"
+image mentor_surprise = "KG110013.kg.png"
+image mentor_smile_closeup = "KG110032.kg.png"
+image mentor_smiling = "KG110042.kg.png"
+
+image main_concerned = "eileen concerned.png"
+
 # The game starts here.
 
 label start:
@@ -62,8 +73,6 @@ label start:
     sylvie "It's time to get cracking! Let's go ahead and see which developers are being assigned to the big one that way we can go ahead and put our team together and get started working."
 
     scene office_background
-    show sylvie blue smile
-    with slowDissolve
 
     show sylvie blue normal:
         xalign 0.75
@@ -116,6 +125,8 @@ label start:
 
     scene team_meeting_room
     show software_team:
+        xalign 0.5
+        yalign 0.5
     with slowDissolve
 
     sylvie "The rest of the developers will be the scrum team. A scrum team
@@ -173,9 +184,11 @@ label tutorial:
     system "Here's a tip: The best software engineers are not the ones that are the smartest or busiest.
     Be sure to try to get the perfect balance between all of your skills!"
 
+    system "Next, your mentor will walk you through how to answer questions in the game!"
+
     # Add relationships after
 
-    jump test_calendar
+    jump part1_training
 
 label test_calendar:
 
@@ -192,3 +205,144 @@ label test_calendar2:
     $ calendar.next() #Function that moves onto next week
 
     jump test_calendar
+
+# Rachel's Events for Sprint 2
+
+label part1_training:
+
+    scene office_background
+
+    show sylvie blue giggle
+
+    # These display lines of dialogue.
+
+    "This is exciting. I'm going to be working on a team with other programmers!"
+
+    jump training_with_mentor
+
+    return
+
+label training_with_mentor:
+    scene office_background
+    show mentor_happy at left
+
+    m "Hey rookie! Welcome to the team, I'll be your mentor for this process. Here's where you're going to be working."
+
+    show office_background
+
+    show sylvie blue giggle at center
+    with dissolve
+    r "Thank you for the opportunity!"
+
+    show mentor_slight_happy at left
+    with dissolve
+    m "So, I have a technical question to ask you- What do you know about computer architecture?"
+
+    menu first_menu:
+        "I know nothing.":
+                jump ohno
+
+        "I know lots!":
+                show bg club
+                with dissolve
+
+                hide mentor_slight_happy
+                with dissolve
+
+                show mentor_smiling at left
+                with dissolve
+
+                jump first_quiz_question
+
+label ohno:
+    show office_background
+    with dissolve
+
+    show mentor_surprise at left
+
+    m "You must be kidding, right?"
+
+    show sylvie blue surprised at center
+    r "Ah..."
+
+    scene office_background
+    show mentor_smile_closeup at left
+    with dissolve
+
+    m "That's alright. There's lots of time to pick up information!"
+
+    jump after_menu
+
+label first_quiz_question:
+    show bg club
+    with None
+
+    show mentor_smiling at left
+    with dissolve
+
+    m "So - The _______ takes care of the concurrency and the synchoronization issues between sub-systems in the system is what?"
+
+    menu first_quiz_questions:
+        "Logical view":
+            "Is this correct?"
+            jump not_correct
+
+        "Development view":
+            "Is this correct?"
+            jump not_correct
+
+        "Process view":
+            "Is this correct?"
+            jump not_correct
+
+        "Physical view":
+            "Is this correct?"
+            jump correct_answer
+
+label AGAIN_first_quiz_question:
+    show mentor_smiling
+    m "Let's try again. The _______ takes care of the concurrency and the synchoronization issues between sub-systems in the system is what?"
+
+    menu first_quiz_questionsv2:
+        "Logical view":
+            "Is this correct?"
+            jump not_correct
+
+        "Development view":
+            "Is this correct?"
+            jump not_correct
+
+        "Process view":
+            "Is this correct?"
+            jump not_correct
+
+        "Physical view":
+            "Is this correct?"
+            jump correct_answer
+
+label correct_answer:
+    m "Good job! That's correct."
+
+    "You have gained +5 Technical Skills Points"
+
+    $ character_metrics.skills = character_metrics.skills + 5
+    
+    jump after_menu
+
+label not_correct:
+    show mentor_surprise at left
+    with dissolve
+
+    m "Not quite!"
+
+    jump AGAIN_first_quiz_question
+
+label after_menu:
+    scene office_background
+    show sylvie blue giggle at center
+    with dissolve
+    "I'll continue to do my best for any other pop quizzes I may have!"
+
+    "Introduction and Tutorial part of the game is complete."
+
+    "Returning to Main Menu."
