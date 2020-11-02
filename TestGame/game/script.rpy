@@ -7,6 +7,8 @@ define sylvie = Character("Sylvie")
 
 define eileen = Character("Eileen")
 
+define bosses = Character("Bosses")
+
 define system = Character("")
 
 define r = Character("Sylvie")
@@ -272,7 +274,7 @@ label ohno:
     m "That's alright. There's lots of time to pick up information!"
 
     jump after_menu
-
+#---------------------------------------------------------------------------------------------------------------------------------------
 label first_quiz_question:
     show bg club
     with None
@@ -326,7 +328,7 @@ label correct_answer:
     "You have gained +5 Technical Skills Points"
 
     $ character_metrics.skills = character_metrics.skills + 5
-    
+
     jump after_menu
 
 label not_correct:
@@ -346,3 +348,131 @@ label after_menu:
     "Introduction and Tutorial part of the game is complete."
 
     "Returning to Main Menu."
+#---------------------------------------------------------------------------------------------------------------------------------------
+label second_quiz_question:
+    show office_background
+    with None
+
+    show software_team at left
+    with dissolve
+
+    bosses "Relating to sprint backlog, how is estimated work remaining updated?"
+
+    menu second_quiz_questions:
+        "Monthly":
+            "Is this correct?"
+            jump not_correct2
+
+        "Weekly":
+            "Is this correct?"
+            jump not_correct2
+
+        "Bi-weekly":
+            "Is this correct?"
+            jump not_correct2
+
+        "Daily":
+            "Is this correct?"
+            jump correct_answer2
+
+label AGAIN_second_quiz_question:
+    show software_team
+    bosses "Relating to sprint backlog, how is estimated work remaining updated?"
+
+    menu second_quiz_questionsv2:
+        "Monthly":
+            "Is this correct?"
+            jump not_correct2
+
+        "Weekly":
+            "Is this correct?"
+            jump not_correct2
+
+        "Bi-weekly":
+            "Is this correct?"
+            jump not_correct2
+
+        "Daily":
+            "Is this correct?"
+            jump correct_answer2
+
+label correct_answer2:
+    bosses "Good job! That's correct."
+
+    "You have gained +5 Technical Skills Points"
+
+    $ character_metrics.skills = character_metrics.skills + 5
+
+    #needs jump statement from where you left off
+
+label not_correct2:
+    show software_team at left
+    with dissolve
+
+    bosses "Not quite!"
+
+    jump AGAIN_second_quiz_question
+
+
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+#Story event 2
+label meeting_with_higherups:
+    scene office_background
+    with None
+
+    show sylvie blue normal:
+        xalign 0.0
+        yalign 1.0
+    with Dissolve(0.5)
+
+    show software_team:
+        xalign 0.75
+        yalign 1.0
+    with Dissolve(1.5)
+
+    show sylvie surprised:
+        xalign 0.0
+        yalign 1.0
+
+
+    sylvie "I wasn't expecting to see you guys here today."
+
+    bosses "We just wanted to step by and check on your project."
+
+    show sylvie blue smile
+
+    sylvie "Awesome have you been checking in on the teams sprint report submissions?"
+
+    bosses "Of course and we really like what we see. Do you mind if ask you a couple questions?"
+
+    show sylvie blue smile
+
+    sylvie "Go ahead I don't mind!"
+
+    jump second_quiz_question
+#---------------------------------------------------------------------------------------------------------------------------------------
+label mentor_proud:
+    scene bg club
+    show mentor_smiling:
+        xalign 0.75
+        yalign 1.0
+    with Dissolve(0.5)
+
+    show sylvie blue normal:
+        xalign 0.0
+        yalign 1.0
+    with Dissolve(0.7)
+
+    m "I'm just so proud of you and all that you've accomplish"
+
+    show mentor_surprise:
+        xalign 0.75
+        yalign 1.0
+
+    m "I have nothing else to teach you I'm porud to announce you are no longer an entry-level developer"
+
+    scene bg club
+    show sylvie blue smile at center:
+
+    sylvie "It's all thanks to you! This is only the beginning of my journey I'm sure their will be higher mountains in the future"

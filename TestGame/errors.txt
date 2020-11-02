@@ -2,10 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/calendar.rpy", line 96: invalid syntax
-                if(self.week % 2) == 0):
-                                       ^
-    
+The label correct_answer is defined twice, at
+  File "game/script.rpy", line 327 and
+  File "game/script.rpy", line 401.
+
+The label not_correct is defined twice, at
+  File "game/script.rpy", line 336 and
+  File "game/script.rpy", line 410.
 
 Ren'Py Version: Ren'Py 7.3.5.606
-Sat Oct 10 17:24:14 2020
+Sun Nov 01 22:32:56 2020
