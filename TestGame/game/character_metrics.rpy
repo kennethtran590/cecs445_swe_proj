@@ -82,6 +82,7 @@ init python:
 
     #character class that holds all metrics
     class character_metrics:
+        week = [0,0,0,0,0] #, exp, money, stress, productivity, skills
         exp = 0
         money = 0
         stressLvl = 0
@@ -91,14 +92,19 @@ init python:
         # update metrics
         def updateExperience(self, level):
             exp = level
+            week[0] += level
         def updateCurrency(self, level):
             money = level
+            week[1] += level
         def updateStress(self, level):
             stressLvl= level
+            week[2] += level
         def updateProductivity(self, level):
             product = level
+            week[3] += level
         def updateSkills(self, level):
             skills = level
+            week[4] += level
          #return metrics
         def returnExperience():
             return this.exp
@@ -108,6 +114,19 @@ init python:
             return this.stressLvl
         def returnProductivity():
             return this.product
+        def updates():
+            if money < 0:
+                stress +=0
+            if exp > 0:
+                exp =0
+            if stress > 0:
+                product +=0
+            if product > 0:
+                money =0
+        def returnWeek():
+            endOfWeek = week
+            week= [0,0,0,0,0]
+            return endOfWeek
 
         # Returns the range of the randomly generated number that the player
         # gets every week depending on their level.
