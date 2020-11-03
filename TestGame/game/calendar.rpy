@@ -82,20 +82,56 @@ init python:
             else:
                 return "None"
 
-        def next(self):
+        def next(self, focus_choice):
             self.week += 1
-            self.generate_metrics()
-
-        def generate_metrics(self):
             rangea, rangeb = character.getLevelRange() # Get range of randomly generated number depending on player level
 
+            # Set up values to be added
+            exp_add = 0
+            stress_add = 0
+            product_add = 0
+            skills_add = 0
+
+            # Get previous character metric values
+            exp_old = character.exp
+            stress_old = character.stressLvl
+            product_old = character.product
+            skills_old = character.skills
+
             # Add numbers to character metrics
-            character.exp = character.exp + 200
-            character.stressLvl = character.stressLvl + random.randint(1, 5)
-            character.product= character.product + random.randint(rangea, rangeb)
-            character.skills = character.skills + random.randint(rangea, rangeb)
-            if((self.week % 2) == 0):
+            character.exp = character.exp + 300 # EXP
+            exp_add = exp_add + 300
+
+            random_stress = random.randint(1, 5) # Stress
+            character.stressLvl = character.stressLvl + random_stress
+            stress_add = stress_add + random_stress
+
+            random_product = random.randint(rangea, rangeb) # Productivity
+            character.product = character.product + random_product
+            product_add = product_add + random_product
+
+            random_skill = random.randint(rangea, rangeb) # Technical Skills
+            character.product = character.product + random_skill
+            skills_add = product_add + random_skill
+
+            if((self.week % 2) == 0): # Money Generation Bi-weekly
                 character.money= character.money + 0
+
+            # Add weekly choice based on user choice
+            if (focus_choice == 1):
+                character.exp = character.exp + 200
+                exp_add = exp_add + 200
+            if (focus_choice == 2):
+                character.stressLvl = character.stressLvl - 10
+                stress_add = stress_add - 10
+            if (focus_choice == 3):
+                character.skills = character.skills + random_product
+                skills_add = skills_add + random_skill
+            if (focus_choice == 4):
+                character.product = character.product + random_skill
+                product_add = product_add + random_product
+            #if (focus_choice == 5):
+
 
     calendar = Calendar()
 

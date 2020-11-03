@@ -132,24 +132,14 @@ init python:
         # gets every week depending on their level.
         def getLevelRange(self):
             if (self.level == 1):
-                return 1, 10;
+                return 1, 5;
             if (self.level == 2):
-                return 1, 15;
+                return 1, 10;
             if (self.level == 3):
-                return 5, 20;
+                return 5, 10;
             if (self.level == 4):
-                return 10, 25;
+                return 10, 15;
             if (self.level == 5):
-                return 15, 30;
-            if (self.levell == 6):
-                return 20, 35;
-            if (self.level == 7):
-                return 25, 40;
-            if (self.level == 8):
-                return 30, 45;
-            if (self.level == 9):
-                return 35, 50;
-            if (self.level == 3):
-                return 40, 55;
+                return 10, 20;
 
     character = character_metrics()
