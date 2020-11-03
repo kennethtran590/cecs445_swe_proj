@@ -192,22 +192,6 @@ label tutorial:
 
     jump part1_training
 
-label test_calendar:
-
-    system "Week has advanced"
-
-    $ calendar.next() #Function that moves onto next week
-
-    jump test_calendar2
-
-label test_calendar2:
-
-    system "Week has advanced"
-
-    $ calendar.next() #Function that moves onto next week
-
-    jump test_calendar
-
 # Rachel's Events for Sprint 2
 
 label part1_training:
@@ -347,7 +331,57 @@ label after_menu:
 
     "Introduction and Tutorial part of the game is complete."
 
-    "Returning to Main Menu."
+    "Returning to weekly focus system for testing."
+
+    jump weekly_focus
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+#Recurring weekly focus system
+
+label weekly_focus:
+    scene office_background
+
+    "At the start of the week, you will choose a specific area of work to focus in for the week."
+
+    "Your character stats that are generated during the week while you work on the project will be affected by your focus choice."
+
+    "'Focus on work' will boost your EXP point gain. 'Chill/Relax' will decrease your stress level. 'Research' will increase your technical skills.
+    'Review own code/work' will increase your productivity gain. 'Socialize' will boost your co-worker relationships."
+
+    "What will you focus on this week?"
+
+    menu weekly_focus_choices:
+        "Focus on work":
+            show work hard at center
+            "Your EXP points are boosted for the week."
+            "A week has advanced."
+            $ calendar.next(1) #Function that moves onto next week
+
+        "Chill/Relax":
+            show chill relax at center
+            "Your stress level has decreased."
+            "A week has advanced."
+            $ calendar.next(2) #Function that moves onto next week
+
+        "Research":
+            show research at center
+            "Your technical skill has been boosted."
+            "A week has advanced."
+            $ calendar.next(3) #Function that moves onto next week
+
+        "Review own code/work":
+            show review at center
+            "Your productivity has been boosted."
+            "A week has advanced."
+            $ calendar.next(4) #Function that moves onto next week
+
+        "Socialize":
+            show socialize at center
+            "Your co-worker relationships have been boosted."
+            "A week has advanced."
+            $ calendar.next(5) #Function that moves onto next week
+
+    jump after_menu
 #---------------------------------------------------------------------------------------------------------------------------------------
 label second_quiz_question:
     show office_background
