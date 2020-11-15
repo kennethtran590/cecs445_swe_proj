@@ -1,22 +1,30 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 402, in script
-    software_team "Good job! That's correct."
-Exception: Sayer 'software_team' is not defined.
+  File "game/script.rpy", line 358, in script
+    $ calendar.next(1) #Function that moves onto next week
+  File "game/script.rpy", line 358, in <module>
+    $ calendar.next(1) #Function that moves onto next week
+  File "game/calendar.rpy", line 135, in next
+    renpy.notify("Stat gain for the Week " + self.week + ": \n +" + exp_add + "Exp Points")
+TypeError: coercing to Unicode: need string or buffer, int found
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 402, in script
-    software_team "Good job! That's correct."
-  File "D:\Users\Malik\Downloads\renpy-7.3.5-sdk\renpy\ast.py", line 678, in execute
-    who = eval_who(self.who, self.who_fast)
-  File "D:\Users\Malik\Downloads\renpy-7.3.5-sdk\renpy\ast.py", line 576, in eval_who
-    raise Exception("Sayer '%s' is not defined." % who.encode("utf-8"))
-Exception: Sayer 'software_team' is not defined.
+  File "game/script.rpy", line 358, in script
+    $ calendar.next(1) #Function that moves onto next week
+  File "C:\Users\steve\OneDrive\Desktop\renpy-7.3.5-sdk\renpy\ast.py", line 914, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "C:\Users\steve\OneDrive\Desktop\renpy-7.3.5-sdk\renpy\python.py", line 2028, in py_exec_bytecode
+    exec bytecode in globals, locals
+  File "game/script.rpy", line 358, in <module>
+    $ calendar.next(1) #Function that moves onto next week
+  File "game/calendar.rpy", line 135, in next
+    renpy.notify("Stat gain for the Week " + self.week + ": \n +" + exp_add + "Exp Points")
+TypeError: coercing to Unicode: need string or buffer, int found
 
 Windows-8-6.2.9200
 Ren'Py 7.3.5.606
 TestGame 1.0
-Sun Nov 01 22:36:25 2020
+Sat Nov 14 17:59:43 2020

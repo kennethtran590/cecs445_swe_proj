@@ -83,7 +83,7 @@ init python:
                 return "None"
 
         def next(self, focus_choice):
-            self.week += 1
+
             rangea, rangeb = character.getLevelRange() # Get range of randomly generated number depending on player level
 
             # Set up values to be added
@@ -131,6 +131,10 @@ init python:
                 character.product = character.product + random_skill
                 product_add = product_add + random_product
             #if (focus_choice == 5):
+
+            renpy.notify("Stat gain for the Week " + str(self.week) + ": \n +" + str(exp_add) + " Exp Points" + "\n +" + str(stress_add) + " Stress" + "\n +" + str(product_add) + " Productivity" + "\n +" + str(skills_add) + " Technical Skill")
+
+            self.week += 1
 
 
     calendar = Calendar()

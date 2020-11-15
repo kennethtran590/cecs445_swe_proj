@@ -381,6 +381,8 @@ label weekly_focus:
             "A week has advanced."
             $ calendar.next(5) #Function that moves onto next week
 
+    #$ renpy.notify('Cheat mode enabled')
+
     jump after_menu
 #---------------------------------------------------------------------------------------------------------------------------------------
 label second_quiz_question:
