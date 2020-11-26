@@ -23,7 +23,7 @@ image mentor_smiling = "KG110042.kg.png"
 image main_concerned = "eileen concerned.png"
 
 # The game starts here.
-
+# -------------------------------------------------------------- WEEK 1 ----------------------------------------------------------------
 label start:
 
     # Show a background. This uses a placeholder by default, but you can
@@ -35,6 +35,9 @@ label start:
     #scene office_background
 
     show screen calendar(date_inf)
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Introduction of the game / Week 1
 
     scene bg club
 
@@ -152,6 +155,9 @@ label start:
 
     jump tutorial
 
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Tutorial / Week 1
+
 label tutorial:
 
     scene office_background
@@ -161,7 +167,9 @@ label tutorial:
     system "Each week, you will generate a number and it will be added to your character attributes
     that you can see on the top right hand corner."
 
-    # Add focus after
+    "At the start of each week, you will choose a specific area of work to focus in for the week."
+
+    "Your character stats that are generated during the week while you work on the project will be affected by your focus choice."
 
     system "The player attributes that you will have in this game are: Level (Exp Points), Technical Skills, Productivity, Stress, and Money."
 
@@ -186,12 +194,62 @@ label tutorial:
     system "Here's a tip: The best software engineers are not the ones that are the smartest or busiest.
     Be sure to try to get the perfect balance between all of your skills!"
 
+    # Add relationships after
+
+    jump weekly_focus_1
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Recurring weekly focus system / Week 1
+
+label weekly_focus_1:
+    scene office_background
+
+    "You enter the new week ready to learn and work!"
+
+    "'Focus on work' will boost your EXP point gain. 'Chill/Relax' will decrease your stress level. 'Research' will increase your technical skills.
+    'Review own code/work' will increase your productivity gain. 'Socialize' will boost your co-worker relationships."
+
+    "What will you focus on this week?"
+
+    menu weekly_focus_choices:
+        "Focus on work":
+            show work hard at center
+            "Your EXP points are boosted for the week."
+            "A week has advanced."
+            $ calendar.focus(1) #Function that moves onto next week
+
+        "Chill/Relax":
+            show chill relax at center
+            "Your stress level has decreased."
+            "A week has advanced."
+            $ calendar.focus(2) #Function that moves onto next week
+
+        "Research":
+            show research at center
+            "Your technical skill has been boosted."
+            "A week has advanced."
+            $ calendar.focus(3) #Function that moves onto next week
+
+        "Review own code/work":
+            show review at center
+            "Your productivity has been boosted."
+            "A week has advanced."
+            $ calendar.focus(4) #Function that moves onto next week
+
+        "Socialize":
+            show socialize at center
+            "Your co-worker relationships have been boosted."
+            "A week has advanced."
+            $ calendar.focus(5) #Function that moves onto next week
+
     system "Next, your mentor will walk you through how to answer questions in the game!"
 
-    # Add relationships after
+    #jump weekly_focus_1
 
     jump part1_training
 
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Random Event 1 / Week 1
 # Rachel's Events for Sprint 2
 
 label part1_training:
@@ -239,7 +297,7 @@ label training_with_mentor:
                 with dissolve
 
                 jump first_quiz_question
-
+#---------------------------------------------------------------------------------------------------------------------------------------
 label ohno:
     show office_background
     with dissolve
@@ -257,7 +315,7 @@ label ohno:
 
     m "That's alright. There's lots of time to pick up information!"
 
-    jump after_menu
+    jump after_menu_1
 #---------------------------------------------------------------------------------------------------------------------------------------
 label first_quiz_question:
     show bg club
@@ -313,7 +371,7 @@ label correct_answer:
 
     $ character_metrics.skills = character_metrics.skills + 5
 
-    jump after_menu
+    jump after_menu_1
 
 label not_correct:
     show mentor_surprise at left
@@ -323,68 +381,131 @@ label not_correct:
 
     jump AGAIN_first_quiz_question
 
-label after_menu:
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Where the script left off
+label after_menu_1:
     scene office_background
     show sylvie blue giggle at center
     with dissolve
     "I'll continue to do my best for any other pop quizzes I may have!"
 
-    "Introduction and Tutorial part of the game is complete."
+    "As you end your work week, you will be able to visit a store on the weekends!"
 
-    "Returning to weekly focus system for testing."
+    "You can purchase"
 
-    jump weekly_focus
+    jump weekend_event_1
 
 #---------------------------------------------------------------------------------------------------------------------------------------
-#Recurring weekly focus system
+# Weekend Event 1 / Week 1
+label weekend_event_1:
 
-label weekly_focus:
+    "Insert weekend event here"
+
+    jump store_1
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Store Event 1 / Week 1
+label store_1:
+
+    "Insert store event here"
+
+    jump home_1
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Store Event 1 / Week 1
+label home_1:
+
+    "Insert home event here"
+
+    $ calendar.next() # Change to Week 2
+    jump weekly_focus_2
+
+
+# -------------------------------------------------------------- WEEK 2 ----------------------------------------------------------------
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Recurring weekly focus system / Week 2
+
+label weekly_focus_2:
     scene office_background
 
-    "At the start of the week, you will choose a specific area of work to focus in for the week."
-
-    "Your character stats that are generated during the week while you work on the project will be affected by your focus choice."
+    "You enter the new week ready to learn and work!"
 
     "'Focus on work' will boost your EXP point gain. 'Chill/Relax' will decrease your stress level. 'Research' will increase your technical skills.
     'Review own code/work' will increase your productivity gain. 'Socialize' will boost your co-worker relationships."
 
     "What will you focus on this week?"
 
-    menu weekly_focus_choices:
+    menu weekly_focus_choices_2:
         "Focus on work":
             show work hard at center
             "Your EXP points are boosted for the week."
             "A week has advanced."
-            $ calendar.next(1) #Function that moves onto next week
+            $ calendar.focus(1) #Function that moves onto next week
 
         "Chill/Relax":
             show chill relax at center
             "Your stress level has decreased."
             "A week has advanced."
-            $ calendar.next(2) #Function that moves onto next week
+            $ calendar.focus(2) #Function that moves onto next week
 
         "Research":
             show research at center
             "Your technical skill has been boosted."
             "A week has advanced."
-            $ calendar.next(3) #Function that moves onto next week
+            $ calendar.focus(3) #Function that moves onto next week
 
         "Review own code/work":
             show review at center
             "Your productivity has been boosted."
             "A week has advanced."
-            $ calendar.next(4) #Function that moves onto next week
+            $ calendar.focus(4) #Function that moves onto next week
 
         "Socialize":
             show socialize at center
             "Your co-worker relationships have been boosted."
             "A week has advanced."
-            $ calendar.next(5) #Function that moves onto next week
+            $ calendar.focus(5) #Function that moves onto next week
 
-    #$ renpy.notify('Cheat mode enabled')
+    jump meeting_with_higherups
 
-    jump after_menu
 #---------------------------------------------------------------------------------------------------------------------------------------
+# Story event 2 / Week 2
+label meeting_with_higherups:
+    scene office_background
+    with None
+
+    show sylvie blue normal:
+        xalign 0.0
+        yalign 1.0
+    with Dissolve(0.5)
+
+    show software_team:
+        xalign 0.75
+        yalign 1.0
+    with Dissolve(1.5)
+
+    show sylvie surprised:
+        xalign 0.0
+        yalign 1.0
+
+
+    sylvie "I wasn't expecting to see you guys here today."
+
+    bosses "We just wanted to step by and check on your project."
+
+    show sylvie blue smile
+
+    sylvie "Awesome have you been checking in on the teams sprint report submissions?"
+
+    bosses "Of course and we really like what we see. Do you mind if ask you a couple questions?"
+
+    show sylvie blue smile
+
+    sylvie "Go ahead I don't mind!"
+
+    jump second_quiz_question
+
 label second_quiz_question:
     show office_background
     with None
@@ -440,6 +561,7 @@ label correct_answer2:
     $ character_metrics.skills = character_metrics.skills + 5
 
     #needs jump statement from where you left off
+    jump week2_check
 
 label not_correct2:
     show software_team at left
@@ -449,45 +571,21 @@ label not_correct2:
 
     jump AGAIN_second_quiz_question
 
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Even Events have a checkpoint - Week 2 Check point
+# GISSELLE INSERT A CHECKPOINT THAT CHECKS THE PLAYER'S CURRENT STATS IF THEY MEET A CERTAIN NUMBER
 
+# pseudocode could be:
+# if character specific metric doesn't meet a certain number:
+#   trigger game over (might need to create a game over event/label)
+# else:
+#   continue
+
+label week2_check:
+    bosses "Let's check your progress in the project so far"
 
 #---------------------------------------------------------------------------------------------------------------------------------------
-#Story event 2
-label meeting_with_higherups:
-    scene office_background
-    with None
 
-    show sylvie blue normal:
-        xalign 0.0
-        yalign 1.0
-    with Dissolve(0.5)
-
-    show software_team:
-        xalign 0.75
-        yalign 1.0
-    with Dissolve(1.5)
-
-    show sylvie surprised:
-        xalign 0.0
-        yalign 1.0
-
-
-    sylvie "I wasn't expecting to see you guys here today."
-
-    bosses "We just wanted to step by and check on your project."
-
-    show sylvie blue smile
-
-    sylvie "Awesome have you been checking in on the teams sprint report submissions?"
-
-    bosses "Of course and we really like what we see. Do you mind if ask you a couple questions?"
-
-    show sylvie blue smile
-
-    sylvie "Go ahead I don't mind!"
-
-    jump second_quiz_question
-#---------------------------------------------------------------------------------------------------------------------------------------
 label mentor_proud:
     scene bg club
     show mentor_smiling:

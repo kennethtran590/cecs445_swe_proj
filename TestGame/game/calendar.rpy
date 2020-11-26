@@ -82,7 +82,7 @@ init python:
             else:
                 return "None"
 
-        def next(self, focus_choice):
+        def focus(self, focus_choice):
 
             rangea, rangeb = character.getLevelRange() # Get range of randomly generated number depending on player level
 
@@ -130,10 +130,17 @@ init python:
             if (focus_choice == 4):
                 character.product = character.product + random_skill
                 product_add = product_add + random_product
+            #Relationships
             #if (focus_choice == 5):
 
-            renpy.notify("Stat gain for the Week " + str(self.week) + ": \n +" + str(exp_add) + " Exp Points" + "\n +" + str(stress_add) + " Stress" + "\n +" + str(product_add) + " Productivity" + "\n +" + str(skills_add) + " Technical Skill")
+            # Level up check
+            if (str(character.exp) == character.getMaxExpPerLevel()):
+                character.level = character.level + 1
+                renpy.notify("You have leveled up to Level " + str(character.level) + "!\nStat gain for Week " + str(self.week) + ": \n +" + str(exp_add) + " Exp Points" + "\n -" + str(stress_add) + " Stress" + "\n +" + str(product_add) + " Productivity" + "\n +" + str(skills_add) + " Technical Skill")
+            else:
+                renpy.notify("Stat gain for Week " + str(self.week) + ": \n +" + str(exp_add) + " Exp Points" + "\n -" + str(stress_add) + " Stress" + "\n +" + str(product_add) + " Productivity" + "\n +" + str(skills_add) + " Technical Skill")
 
+        def next(self):
             self.week += 1
 
 
@@ -167,8 +174,8 @@ screen calendar(date_inf):
                 text calendar.month() size 10  # Smallish texts with monthname and year in the center of the box.
                 spacing 8 # Makes sure there's a space between the two text-items, so that it doesn't read 'august2014' but 'august 2014'.
             text "" size 10
-            text "Level 1" size 16 xalign 0.5 #character.level
-            text "Exp Points: " + str(character.exp) + " / 1,000" size 10 xalign 0.5 #character.exp.get()
+            text "Level " + str(character.level) size 16 xalign 0.5 #character.level
+            text "Exp Points: " + str(character.exp) + " / " + character.getMaxExpPerLevel() size 10 xalign 0.5 #character.exp.get()
             text "Technical Skills: " + str(character.skills) size 12 xalign 0.5 #character.skill
             text "Productivity: " + str(character.product) size 12 xalign 0.5 #character.product.get()
             text "Stress: " + str(character.stressLvl) size 12 xalign 0.5 #character.stressLvl.get()
