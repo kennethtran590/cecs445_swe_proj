@@ -624,13 +624,6 @@ label not_correct2:
 
 #---------------------------------------------------------------------------------------------------------------------------------------
 # Even Events have a checkpoint - Week 2 Check point
-# GISSELLE INSERT A CHECKPOINT THAT CHECKS THE PLAYER'S CURRENT STATS IF THEY MEET A CERTAIN NUMBER
-
-# pseudocode could be:
-# if character specific metric doesn't meet a certain number:
-#   trigger game over (might need to create a game over event/label)
-# else:
-#   continue
 
 label week2_check:
     bosses "Let's check your progress in the project so far"
@@ -1088,6 +1081,17 @@ label end_ask_coworker:
     show main_happy
     r "I'm glad I can see others in the company."
 
+
+label end_check:
+    $ ending = character_metrics.checkForEnd()
+    $if ending == True:
+        jump gameOver
+
+label gameOver:
+    # I just kinda made it so if the person loses, they "get fired" and are taken to the start
+    bosses "YOU ARE FIRED!"
+    jump start
+
 # -------------------------------------------------------------- WEEK 6 ----------------------------------------------------------------
 
 #---------------------------------------------------------------------------------------------------------------------------------------
@@ -1429,3 +1433,10 @@ label mentor_proud:
     show sylvie blue smile at center:
 
     sylvie "It's all thanks to you! This is only the beginning of my journey I'm sure their will be higher mountains in the future"
+#check to see if game has been won
+label check_for_Winning:
+    $ ending = character_metrics.checkForWin()
+    $if ending == True:
+        jump mentor_proud
+    $else:
+        jump gameOver
