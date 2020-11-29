@@ -635,11 +635,108 @@ label not_correct2:
 label week2_check:
     bosses "Let's check your progress in the project so far"
 
-    jump lead_lunch_and_learn
+    # After event is done
+    "That wraps it up for the work week. You pack up your things and get ready to head home."
+    jump weekend_event_2
 
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Weekend Event 2 / Week 2
+label weekend_event_2:
 
+    scene bg club
+
+    "As you head home you wonder if you should stop by the store to buy more items..."
+
+    "Do you want to head to the store?"
+
+    menu ask_store_2:
+        "Yes, head to the store.":
+            "You ready your wallet and head to the store!"
+            jump store_2
+
+        "No, head home.":
+            "You decide to save money and head home."
+            jump home_2
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Store Event 2 / Week 2
+label store_2:
+
+    #show screen shop_screen
+
+    "Insert store"
+
+    jump home_2
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Store Event 2 / Week 2
+label home_2:
+
+    scene home
+    with dissolve
+
+    "After a busy week, you head home to rest up."
+
+    "You learned a lot about software engineering in the first week and are eager for what's to come in the future!"
+
+    $ calendar.next() # Change to Week 3
+
+    $ renpy.notify("A week has advanced.")
+
+    jump weekly_focus_3
 
 # -------------------------------------------------------------- WEEK 3 ----------------------------------------------------------------
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Recurring weekly focus system / Week 3
+
+label weekly_focus_3:
+    scene bg club
+    with dissolve
+
+    "You enter the new week ready to learn and work!"
+
+    scene office_background
+
+    "What will you focus on this week?"
+
+    "Reminder!"
+
+    "'Focus on work' will boost your EXP point gain. 'Chill/Relax' will decrease your stress level. 'Research' will increase your technical skills.
+    'Review own code/work' will increase your productivity gain. 'Socialize' will boost your co-worker relationships."
+
+    menu weekly_focus_choices_3:
+        "Focus on work":
+            show work hard at center
+            "Your EXP points are boosted for the week."
+            "A week has advanced."
+            $ calendar.focus(1) #Function that moves onto next week
+
+        "Chill/Relax":
+            show chill relax at center
+            "Your stress level has decreased."
+            "A week has advanced."
+            $ calendar.focus(2) #Function that moves onto next week
+
+        "Research":
+            show research at center
+            "Your technical skill has been boosted."
+            "A week has advanced."
+            $ calendar.focus(3) #Function that moves onto next week
+
+        "Review own code/work":
+            show review at center
+            "Your productivity has been boosted."
+            "A week has advanced."
+            $ calendar.focus(4) #Function that moves onto next week
+
+        #"Socialize":
+        #    show socialize at center
+        #    "Your co-worker relationships have been boosted."
+        #    "A week has advanced."
+        #    $ calendar.focus(5) #Function that moves onto next week
+
+    jump lead_lunch_and_learn
 
 #---------------------------------------------------------------------------------------------------------------------------------------
 # Week 3 Event
@@ -726,10 +823,205 @@ label im_not_ready:
     show main_happy at center
     r "Okay, thank you!"
 
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Weekend Event 3 / Week 3
+label weekend_event_3:
+
+    scene bg club
+
+    "As you head home you wonder if you should stop by the store to buy more items..."
+
+    "Do you want to head to the store?"
+
+    menu ask_store_3:
+        "Yes, head to the store.":
+            "You ready your wallet and head to the store!"
+            jump store_3
+
+        "No, head home.":
+            "You decide to save money and head home."
+            jump home_3
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Store Event 3 / Week 3
+label store_3:
+
+    #show screen shop_screen
+
+    "Insert store"
+
+    jump home_3
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Store Event 3 / Week 3
+label home_3:
+
+    scene home
+    with dissolve
+
+    "After a busy week, you head home to rest up."
+
+    "You learned a lot about software engineering in the first week and are eager for what's to come in the future!"
+
+    $ calendar.next() # Change to Week 4
+
+    $ renpy.notify("A week has advanced.")
+
+    jump weekly_focus_4
+
 # -------------------------------------------------------------- WEEK 4 ----------------------------------------------------------------
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Recurring weekly focus system / Week 4
+
+label weekly_focus_4:
+    scene bg club
+    with dissolve
+
+    "You enter the new week ready to learn and work!"
+
+    scene office_background
+
+    "What will you focus on this week?"
+
+    "Reminder!"
+
+    "'Focus on work' will boost your EXP point gain. 'Chill/Relax' will decrease your stress level. 'Research' will increase your technical skills.
+    'Review own code/work' will increase your productivity gain. 'Socialize' will boost your co-worker relationships."
+
+    menu weekly_focus_choices_4:
+        "Focus on work":
+            show work hard at center
+            "Your EXP points are boosted for the week."
+            "A week has advanced."
+            $ calendar.focus(1) #Function that moves onto next week
+
+        "Chill/Relax":
+            show chill relax at center
+            "Your stress level has decreased."
+            "A week has advanced."
+            $ calendar.focus(2) #Function that moves onto next week
+
+        "Research":
+            show research at center
+            "Your technical skill has been boosted."
+            "A week has advanced."
+            $ calendar.focus(3) #Function that moves onto next week
+
+        "Review own code/work":
+            show review at center
+            "Your productivity has been boosted."
+            "A week has advanced."
+            $ calendar.focus(4) #Function that moves onto next week
+
+        #"Socialize":
+        #    show socialize at center
+        #    "Your co-worker relationships have been boosted."
+        #    "A week has advanced."
+        #    $ calendar.focus(5) #Function that moves onto next week
+
+    jump lead_lunch_and_learn
+    # NEED STORY EVENT
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Weekend Event 4 / Week 4
+label weekend_event_4:
+
+    scene bg club
+
+    "As you head home you wonder if you should stop by the store to buy more items..."
+
+    "Do you want to head to the store?"
+
+    menu ask_store_4:
+        "Yes, head to the store.":
+            "You ready your wallet and head to the store!"
+            jump store_4
+
+        "No, head home.":
+            "You decide to save money and head home."
+            jump home_4
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Store Event 4 / Week 4
+label store_4:
+
+    #show screen shop_screen
+
+    "Insert store"
+
+    jump home_4
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Store Event 4 / Week 4
+label home_4:
+
+    scene home
+    with dissolve
+
+    "After a busy week, you head home to rest up."
+
+    "You learned a lot about software engineering in the first week and are eager for what's to come in the future!"
+
+    $ calendar.next() # Change to Week 5
+
+    $ renpy.notify("A week has advanced.")
+
+    jump weekly_focus_5
 
 
 # -------------------------------------------------------------- WEEK 5 ----------------------------------------------------------------
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Recurring weekly focus system / Week 5
+
+label weekly_focus_5:
+    scene bg club
+    with dissolve
+
+    "You enter the new week ready to learn and work!"
+
+    scene office_background
+
+    "What will you focus on this week?"
+
+    "Reminder!"
+
+    "'Focus on work' will boost your EXP point gain. 'Chill/Relax' will decrease your stress level. 'Research' will increase your technical skills.
+    'Review own code/work' will increase your productivity gain. 'Socialize' will boost your co-worker relationships."
+
+    menu weekly_focus_choices_5:
+        "Focus on work":
+            show work hard at center
+            "Your EXP points are boosted for the week."
+            "A week has advanced."
+            $ calendar.focus(1) #Function that moves onto next week
+
+        "Chill/Relax":
+            show chill relax at center
+            "Your stress level has decreased."
+            "A week has advanced."
+            $ calendar.focus(2) #Function that moves onto next week
+
+        "Research":
+            show research at center
+            "Your technical skill has been boosted."
+            "A week has advanced."
+            $ calendar.focus(3) #Function that moves onto next week
+
+        "Review own code/work":
+            show review at center
+            "Your productivity has been boosted."
+            "A week has advanced."
+            $ calendar.focus(4) #Function that moves onto next week
+
+        #"Socialize":
+        #    show socialize at center
+        #    "Your co-worker relationships have been boosted."
+        #    "A week has advanced."
+        #    $ calendar.focus(5) #Function that moves onto next week
+
+    jump coworker_needs_help
 
 #---------------------------------------------------------------------------------------------------------------------------------------
 # Week 5 Event
@@ -798,9 +1090,110 @@ label end_ask_coworker:
 
 # -------------------------------------------------------------- WEEK 6 ----------------------------------------------------------------
 
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Recurring weekly focus system / Week 6
+
+label weekly_focus_6:
+    scene bg club
+    with dissolve
+
+    "You enter the new week ready to learn and work!"
+
+    scene office_background
+
+    "What will you focus on this week?"
+
+    "Reminder!"
+
+    "'Focus on work' will boost your EXP point gain. 'Chill/Relax' will decrease your stress level. 'Research' will increase your technical skills.
+    'Review own code/work' will increase your productivity gain. 'Socialize' will boost your co-worker relationships."
+
+    menu weekly_focus_choices_6:
+        "Focus on work":
+            show work hard at center
+            "Your EXP points are boosted for the week."
+            "A week has advanced."
+            $ calendar.focus(1) #Function that moves onto next week
+
+        "Chill/Relax":
+            show chill relax at center
+            "Your stress level has decreased."
+            "A week has advanced."
+            $ calendar.focus(2) #Function that moves onto next week
+
+        "Research":
+            show research at center
+            "Your technical skill has been boosted."
+            "A week has advanced."
+            $ calendar.focus(3) #Function that moves onto next week
+
+        "Review own code/work":
+            show review at center
+            "Your productivity has been boosted."
+            "A week has advanced."
+            $ calendar.focus(4) #Function that moves onto next week
+
+        #"Socialize":
+        #    show socialize at center
+        #    "Your co-worker relationships have been boosted."
+        #    "A week has advanced."
+        #    $ calendar.focus(5) #Function that moves onto next week
+
+    jump coworker_needs_help
 
 
 # -------------------------------------------------------------- WEEK 7 ----------------------------------------------------------------
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Recurring weekly focus system / Week 7
+
+label weekly_focus_7:
+    scene bg club
+    with dissolve
+
+    "You enter the new week ready to learn and work!"
+
+    scene office_background
+
+    "What will you focus on this week?"
+
+    "Reminder!"
+
+    "'Focus on work' will boost your EXP point gain. 'Chill/Relax' will decrease your stress level. 'Research' will increase your technical skills.
+    'Review own code/work' will increase your productivity gain. 'Socialize' will boost your co-worker relationships."
+
+    menu weekly_focus_choices_7:
+        "Focus on work":
+            show work hard at center
+            "Your EXP points are boosted for the week."
+            "A week has advanced."
+            $ calendar.focus(1) #Function that moves onto next week
+
+        "Chill/Relax":
+            show chill relax at center
+            "Your stress level has decreased."
+            "A week has advanced."
+            $ calendar.focus(2) #Function that moves onto next week
+
+        "Research":
+            show research at center
+            "Your technical skill has been boosted."
+            "A week has advanced."
+            $ calendar.focus(3) #Function that moves onto next week
+
+        "Review own code/work":
+            show review at center
+            "Your productivity has been boosted."
+            "A week has advanced."
+            $ calendar.focus(4) #Function that moves onto next week
+
+        #"Socialize":
+        #    show socialize at center
+        #    "Your co-worker relationships have been boosted."
+        #    "A week has advanced."
+        #    $ calendar.focus(5) #Function that moves onto next week
+
+    jump earthquake
 
 #---------------------------------------------------------------------------------------------------------------------------------------
 # Week 7 Event
@@ -849,12 +1242,113 @@ label earthquake:
 
 # -------------------------------------------------------------- WEEK 8 ----------------------------------------------------------------
 
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Recurring weekly focus system / Week 8
+
+label weekly_focus_8:
+    scene bg club
+    with dissolve
+
+    "You enter the new week ready to learn and work!"
+
+    scene office_background
+
+    "What will you focus on this week?"
+
+    "Reminder!"
+
+    "'Focus on work' will boost your EXP point gain. 'Chill/Relax' will decrease your stress level. 'Research' will increase your technical skills.
+    'Review own code/work' will increase your productivity gain. 'Socialize' will boost your co-worker relationships."
+
+    menu weekly_focus_choices_8:
+        "Focus on work":
+            show work hard at center
+            "Your EXP points are boosted for the week."
+            "A week has advanced."
+            $ calendar.focus(1) #Function that moves onto next week
+
+        "Chill/Relax":
+            show chill relax at center
+            "Your stress level has decreased."
+            "A week has advanced."
+            $ calendar.focus(2) #Function that moves onto next week
+
+        "Research":
+            show research at center
+            "Your technical skill has been boosted."
+            "A week has advanced."
+            $ calendar.focus(3) #Function that moves onto next week
+
+        "Review own code/work":
+            show review at center
+            "Your productivity has been boosted."
+            "A week has advanced."
+            $ calendar.focus(4) #Function that moves onto next week
+
+        #"Socialize":
+        #    show socialize at center
+        #    "Your co-worker relationships have been boosted."
+        #    "A week has advanced."
+        #    $ calendar.focus(5) #Function that moves onto next week
+
+    jump earthquake
 
 
 # -------------------------------------------------------------- WEEK 9 ----------------------------------------------------------------
 
 #---------------------------------------------------------------------------------------------------------------------------------------
-# Week 7 Event
+# Recurring weekly focus system / Week 9
+
+label weekly_focus_9:
+    scene bg club
+    with dissolve
+
+    "You enter the new week ready to learn and work!"
+
+    scene office_background
+
+    "What will you focus on this week?"
+
+    "Reminder!"
+
+    "'Focus on work' will boost your EXP point gain. 'Chill/Relax' will decrease your stress level. 'Research' will increase your technical skills.
+    'Review own code/work' will increase your productivity gain. 'Socialize' will boost your co-worker relationships."
+
+    menu weekly_focus_choices_9:
+        "Focus on work":
+            show work hard at center
+            "Your EXP points are boosted for the week."
+            "A week has advanced."
+            $ calendar.focus(1) #Function that moves onto next week
+
+        "Chill/Relax":
+            show chill relax at center
+            "Your stress level has decreased."
+            "A week has advanced."
+            $ calendar.focus(2) #Function that moves onto next week
+
+        "Research":
+            show research at center
+            "Your technical skill has been boosted."
+            "A week has advanced."
+            $ calendar.focus(3) #Function that moves onto next week
+
+        "Review own code/work":
+            show review at center
+            "Your productivity has been boosted."
+            "A week has advanced."
+            $ calendar.focus(4) #Function that moves onto next week
+
+        #"Socialize":
+        #    show socialize at center
+        #    "Your co-worker relationships have been boosted."
+        #    "A week has advanced."
+        #    $ calendar.focus(5) #Function that moves onto next week
+
+    jump beach_episode
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Week 9 Event
 #Random event 5: BEACH EPISODE
 
 label beach_episode:
