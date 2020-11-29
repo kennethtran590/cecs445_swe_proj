@@ -37,6 +37,44 @@ image coworker_shirtless = "coworker shirtless.png"
 image beach_day = "bg_beach_day.jpg"
 image beach_night = "bg_beach_night.jpg"
 
+# INVENTORY
+default shop = []
+default inventory = []
+default equipped = []
+default selected_item = None
+default selected_shop_item = None
+default player = Player(0,0,100,0,0,0)
+
+#Equipment
+default keyboard1 = Keyboard("keyboard", 'Razer Ornata', 'Combining a soft touch with a crisp tactile click, the Razer Ornata Chroma presents a mecha-membrane typing experience that’s swift and exact. Plus, it’s incredibly comfortable to use.', 75, 37, 5, 0, 0)
+default keyboard2 = Keyboard("keyboard", 'Anne Pro 2', ' This 60% compact keyboard feels very well-built and looks sleek in most computer setups. Every key on it can be fully programmed, and it has fully customizable RGB lighting behind each key.', 125, 62, 10, 0, 0)
+default keyboard3 = Keyboard("keyboard", 'Ducky One 2 Mini', 'The bezel design shares a similar sleek frame as its predecessor. They use USB HID with the highest frequency of 1000 Hz polling rate, meaning the keyboard is sending its input signal(s) to your PC 1000 times per second.', 200, 100, 20, 0, 0)
+default keyboard4 = Keyboard("keyboard", 'Happy Hacking Keyboard', 'The Happy Hacking Keyboard is a small computer keyboard produced by PFU Limited of Japan, codeveloped with Japanese computer scientist and pioneer Eiiti Wada. Its reduction of keys from the common 104-key layout down to 60 keys in the professional series is the basis for its smaller size while retaining full key size.', 300, 150, 50, 0, 0)
+
+default mouse1 = Mouse("mouse", 'Gaming Mouse V1', 'A mouse with additional functions to make it suited to computer gaming and high intensity programming. Functions include programmable buttons.', 20, 10, 5, 0, 0)
+default mouse2 = Mouse("mouse", 'Gaming Mouse V2', 'A mouse with additional functions to make it suited to computer gaming and high intensity programming. Functions include programmable buttons, higher sensitivity.', 35, 17, 10, 0, 0)
+default mouse3 = Mouse("mouse", 'Gaming Mouse V3', 'A mouse with additional functions to make it suited to computer gaming and high intensity programming. Functions include programmable buttons, higher sensitivity, adjustable weight and faster response times.', 60, 30, 20, 0, 0)
+
+default chair1 = Chair("chair", 'Wooden Chair', 'A basic plastic lawn chair.', 40, 20, 5, 0, 0)
+default chair2 = Chair("chair", 'Office Chair', 'A black leather chair with adequate padding for comfort.', 70, 35, 10, 0, 0)
+default chair3 = Chair("chair", 'Gaming Chair', 'A chair designed for the comfort of video game players, having high backrest designed to support the upper back and shoulders.', 130, 65, 15, 0, 0)
+
+default monitor1 = Monitor("monitor", '1080p Monitor', 'A high-definition PC monitor that delivers a visually clear and exciting multimedia experience.', 35, 17, 10, 0, 0)
+default monitor2 = Monitor("monitor", '4k Monitor', 'A high-definition PC monitor delivers a visually clear and exciting multimedia experience at a higher resolution for better code viewing.', 60, 30, 30, 0, 0)
+default monitor3 = Monitor("monitor", '8k Monitor', 'A high-definition PC monitor delivers a visually clear and exciting multimedia experience at even higher resolution to view even more code.', 110, 55, 75, 0, 0)
+
+#Consumable Items
+default coffee = Consumable("coffee", 'Coffee', 'A brewed drink prepared from roasted coffee beans that is a good source of caffeine.', 10, 5, 1.5, 0, 0)
+default energy = Consumable("energy", 'Energy Drink', 'A drink containing stimulating compounds, such as caffeine, to heavily restore stamina and improve productivity.', 15, 7, 3, 0, 0)
+default rubik = Consumable("rubik", "Rubik's Cube", 'A common puzzle in the form of a plastic cube covered with multicolored squares, which the player attempts to twist and turn so that all the squares on each face are of the same color.', 25, 12, 0, 5, 5)
+default fidget = Consumable("fidget", 'Fidget Spinner', 'A toy that consists of a ball bearing in the center of a multi-lobed (typically two or three) flat structure made from metal or plastic designed to spin along its axis with very little effort.', 50, 25, 0, 10, 0)
+default candle = Consumable("candle", 'Eucalyptus Candle', 'A candle with a a minty and uplifting smell, eucalyptus helps decongest the nose and provide relief from colds, sinusitis, and allergies. It is emanated also to build energy.', 120, 60, 5, 15, 0)
+default intro_code = Book("book", 'Intro to Coding Textbook', 'A textbook providing the fundamental teachings for coding. Can only be purchased once.', 50, 25, 0, 0, 5)
+default adv_code = Book("book", 'Intro to Algorithms', 'A textbook providing the fundamental teachings for algorithms. Can only be purchased once.', 100, 50, 0, 0, 10)
+default intro_algr = Book("book", 'Advance Coding Textbook', 'A textbook providing advanced techniques and teachings for coding. Can only be purchased once.', 175, 87, 0, 0, 20)
+default adv_algr = Book("book", 'Advance Algorithms', 'A textbook providing advanced techniques and teachings for algorithms. Can only be purchased once.', 250, 125, 0, 0, 50)
+
+
 # The game starts here.
 # -------------------------------------------------------------- WEEK 1 ----------------------------------------------------------------
 label start:
@@ -49,7 +87,35 @@ label start:
 
     #scene office_background
 
+    # ADD SHOP ITEMS
+    $shop.append(keyboard1)
+    $shop.append(keyboard2)
+    $shop.append(keyboard3)
+    $shop.append(keyboard4)
+
+    $shop.append(mouse1)
+    $shop.append(mouse2)
+    $shop.append(mouse3)
+
+    $shop.append(monitor1)
+    $shop.append(monitor2)
+    $shop.append(monitor3)
+
+    $shop.append(chair1)
+    $shop.append(chair2)
+    $shop.append(chair3)
+    $shop.append(coffee)
+    $shop.append(energy)
+    $shop.append(rubik)
+    $shop.append(fidget)
+    $shop.append(candle)
+    $shop.append(intro_code)
+    $shop.append(adv_code)
+    $shop.append(intro_algr)
+    $shop.append(adv_algr)
+
     show screen calendar(date_inf)
+    show screen show_inventory
 
 #---------------------------------------------------------------------------------------------------------------------------------------
 # Introduction of the game / Week 1
@@ -433,7 +499,10 @@ label weekend_event_1:
     menu ask_store_1:
         "Yes, head to the store.":
             "You ready your wallet and head to the store!"
-            jump store_1
+            window hide
+            show screen shop_screen
+            pause
+            jump home_1
 
         "No, head home.":
             "You decide to save money and head home."
@@ -443,15 +512,19 @@ label weekend_event_1:
 # Store Event 1 / Week 1
 label store_1:
 
-    #show screen shop_screen
+    window hide
+    pause
 
-    "Insert store"
+    show screen shop_screen
+
+    window show
 
     jump home_1
 
 #---------------------------------------------------------------------------------------------------------------------------------------
 # Store Event 1 / Week 1
 label home_1:
+    hide screen shop_screen
 
     scene home
     with dissolve
@@ -813,6 +886,8 @@ label after_lets_do_it:
     show main_v_happy
     r "Wow, I'm so glad. Thank you!"
 
+    jump weekend_event_3
+
 #this is for declining the lunch and learn
 label im_not_ready:
     scene office_background
@@ -822,6 +897,8 @@ label im_not_ready:
 
     show main_happy at center
     r "Okay, thank you!"
+
+    jump weekend_event_3
 
 #---------------------------------------------------------------------------------------------------------------------------------------
 # Weekend Event 3 / Week 3
@@ -1088,6 +1165,16 @@ label end_ask_coworker:
     show main_happy
     r "I'm glad I can see others in the company."
 
+label end_check:
+    $ ending = character_metrics.checkForEnd()
+    $if ending == True:
+        jump gameOver
+
+label gameOver:
+    # I just kinda made it so if the person loses, they "get fired" and are taken to the start
+    bosses "YOU ARE FIRED!"
+    jump start
+
 # -------------------------------------------------------------- WEEK 6 ----------------------------------------------------------------
 
 #---------------------------------------------------------------------------------------------------------------------------------------
@@ -1291,7 +1378,35 @@ label weekly_focus_8:
         #    "A week has advanced."
         #    $ calendar.focus(5) #Function that moves onto next week
 
-    jump earthquake
+    jump mentor_proud
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+label mentor_proud:
+    scene bg club
+    show mentor_smiling:
+        xalign 0.75
+        yalign 1.0
+    with Dissolve(0.5)
+
+    show sylvie blue normal:
+        xalign 0.0
+        yalign 1.0
+    with Dissolve(0.7)
+
+    m "I'm just so proud of you and all that you've accomplish"
+
+    show mentor_surprise:
+        xalign 0.75
+        yalign 1.0
+
+    m "I have nothing else to teach you I'm porud to announce you are no longer an entry-level developer"
+
+    scene bg club
+    show sylvie blue smile at center:
+
+    sylvie "It's all thanks to you! This is only the beginning of my journey I'm sure their will be higher mountains in the future"
+
+    # jump weekend event
 
 
 # -------------------------------------------------------------- WEEK 9 ----------------------------------------------------------------
@@ -1403,29 +1518,10 @@ label beach_day:
 
 # -------------------------------------------------------------- WEEK 10 ----------------------------------------------------------------
 
-
-#---------------------------------------------------------------------------------------------------------------------------------------
-label mentor_proud:
-    scene bg club
-    show mentor_smiling:
-        xalign 0.75
-        yalign 1.0
-    with Dissolve(0.5)
-
-    show sylvie blue normal:
-        xalign 0.0
-        yalign 1.0
-    with Dissolve(0.7)
-
-    m "I'm just so proud of you and all that you've accomplish"
-
-    show mentor_surprise:
-        xalign 0.75
-        yalign 1.0
-
-    m "I have nothing else to teach you I'm porud to announce you are no longer an entry-level developer"
-
-    scene bg club
-    show sylvie blue smile at center:
-
-    sylvie "It's all thanks to you! This is only the beginning of my journey I'm sure their will be higher mountains in the future"
+#check to see if game has been won
+label check_for_Winning:
+    $ ending = character_metrics.checkForWin()
+    $if ending == True:
+        jump mentor_proud
+    $else:
+        jump gameOver

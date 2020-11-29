@@ -1,5 +1,6 @@
 init python:
     import abc
+    import random
 
     # metric Abstract class
     class metric(abc.ABCMeta):
@@ -82,7 +83,7 @@ init python:
 
     #character class that holds all metrics
     class character_metrics:
-        week = [0,0,0,0,0] #, exp, money, stress, productivity, skills
+        week = [0,0,0,0,0] # exp, money, stress, productivity, skills
         exp = 0
         money = 0
         stressLvl = 0
@@ -102,7 +103,7 @@ init python:
         def updateProductivity(self, level):
             product = level
             week[3] += level
-        def updateSkills(self, level):
+        def updateTech(self, level):
             skills = level
             week[4] += level
          #return metrics
@@ -115,19 +116,39 @@ init python:
         def returnProductivity():
             return this.product
         def updates():
-            if money < 0:
-                stress +=0
-            if exp > 0:
-                exp =0
-            if stress > 0:
-                product +=0
-            if product > 0:
-                money =0
+
+            if exp > 5000:
+                exp =5000
+            if stressLvl > 50:
+                stressLvl += random.randint(1,20)
+            if product > 250:
+                product = 250
+            if skills > 250:
+                skills = 250
+
         def returnWeek():
             endOfWeek = week
+            stressLvl += 5
             week= [0,0,0,0,0]
             return endOfWeek
-
+        def checkForEnd():
+            ending = True
+            if exp >= 2500:
+                ending = False
+            if skills > 1:
+                ending = False
+            if product > 1:
+                ending = False
+            return ending
+        def checkForWin():
+            ending = True
+            if exp <= 5000:
+                ending = False
+            if skills <= 200:
+                ending = False
+            if product <= 200:
+                ending = False
+            return ending
         # Returns the range of the randomly generated number that the player
         # gets every week depending on their level.
         def getLevelRange(self):
