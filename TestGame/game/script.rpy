@@ -3,24 +3,39 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
+# CHARACTERS
 define sylvie = Character("Sylvie")
-
 define eileen = Character("Eileen")
-
 define bosses = Character("Bosses")
-
 define system = Character("")
-
 define r = Character("Sylvie")
 define m = Character("Mentor")
+define a = Character("Adrian")
+
+# IMAGES
 
 image mentor_happy = "KG110001.kg.png"
 image mentor_slight_happy = "KG110002.kg.png"
 image mentor_surprise = "KG110013.kg.png"
 image mentor_smile_closeup = "KG110032.kg.png"
 image mentor_smiling = "KG110042.kg.png"
+image mentor_shock = "mentor shocked.png"
 
 image main_concerned = "eileen concerned.png"
+image main_happy = "eileen happy.png"
+image main_v_happy = "eileen vhappy.png"
+
+image presentation_2 = "cropped_presentation.jpg"
+image list = "bg_notepad.jpg"
+
+image coworker_happy = "coworker happy.png"
+image coworker_cheeky = "coworker cheeky.png"
+image coworker_thumbs = "coworker thumbs up.png"
+image coworker_sigh = "coworker sigh.png"
+image coworker_shirtless = "coworker shirtless.png"
+
+image beach_day = "bg_beach_day.jpg"
+image beach_night = "bg_beach_night.jpg"
 
 # The game starts here.
 # -------------------------------------------------------------- WEEK 1 ----------------------------------------------------------------
@@ -236,11 +251,11 @@ label weekly_focus_1:
             "A week has advanced."
             $ calendar.focus(4) #Function that moves onto next week
 
-        "Socialize":
-            show socialize at center
-            "Your co-worker relationships have been boosted."
-            "A week has advanced."
-            $ calendar.focus(5) #Function that moves onto next week
+        #"Socialize":
+            #show socialize at center
+            #"Your co-worker relationships have been boosted."
+            #"A week has advanced."
+            #$ calendar.focus(5) #Function that moves onto next week
 
     system "Next, your mentor will walk you through how to answer questions in the game!"
 
@@ -287,14 +302,14 @@ label training_with_mentor:
                 jump ohno
 
         "I know lots!":
-                show bg club
-                with dissolve
+                #show bg club
+                #with dissolve
 
-                hide mentor_slight_happy
-                with dissolve
+                #hide mentor_slight_happy
+                #with dissolve
 
-                show mentor_smiling at left
-                with dissolve
+                #show mentor_smiling at left
+                #with dissolve
 
                 jump first_quiz_question
 #---------------------------------------------------------------------------------------------------------------------------------------
@@ -318,7 +333,7 @@ label ohno:
     jump after_menu_1
 #---------------------------------------------------------------------------------------------------------------------------------------
 label first_quiz_question:
-    show bg club
+    scene office_background
     with None
 
     show mentor_smiling at left
@@ -389,9 +404,19 @@ label after_menu_1:
     with dissolve
     "I'll continue to do my best for any other pop quizzes I may have!"
 
+    scene office_background
+
     "As you end your work week, you will be able to visit a store on the weekends!"
 
-    "You can purchase"
+    "You will gain $230 for your work on the project every week."
+
+    "At the end of the weekend, you can be able to go to a store to purchase items that will help you boost your skills."
+
+    "You can be able to equip items such as a better keyboard, mouse, desk chair and more!"
+
+    "You can also be able to consume some items for a boost in skills."
+
+    "That wraps it up for the work week. You pack up your things and get ready to head home."
 
     jump weekend_event_1
 
@@ -399,15 +424,28 @@ label after_menu_1:
 # Weekend Event 1 / Week 1
 label weekend_event_1:
 
-    "Insert weekend event here"
+    scene bg club
 
-    jump store_1
+    "As you head home you wonder if you should stop by the store to buy more items..."
+
+    "Do you want to head to the store?"
+
+    menu ask_store_1:
+        "Yes, head to the store.":
+            "You ready your wallet and head to the store!"
+            jump store_1
+
+        "No, head home.":
+            "You decide to save money and head home."
+            jump home_1
 
 #---------------------------------------------------------------------------------------------------------------------------------------
 # Store Event 1 / Week 1
 label store_1:
 
-    "Insert store event here"
+    #show screen shop_screen
+
+    "Insert store"
 
     jump home_1
 
@@ -415,9 +453,17 @@ label store_1:
 # Store Event 1 / Week 1
 label home_1:
 
-    "Insert home event here"
+    scene home
+    with dissolve
+
+    "After a busy week, you head home to rest up."
+
+    "You learned a lot about software engineering in the first week and are eager for what's to come in the future!"
 
     $ calendar.next() # Change to Week 2
+
+    $ renpy.notify("A week has advanced.")
+
     jump weekly_focus_2
 
 
@@ -427,14 +473,19 @@ label home_1:
 # Recurring weekly focus system / Week 2
 
 label weekly_focus_2:
-    scene office_background
+    scene bg club
+    with dissolve
 
     "You enter the new week ready to learn and work!"
 
-    "'Focus on work' will boost your EXP point gain. 'Chill/Relax' will decrease your stress level. 'Research' will increase your technical skills.
-    'Review own code/work' will increase your productivity gain. 'Socialize' will boost your co-worker relationships."
+    scene office_background
 
     "What will you focus on this week?"
+
+    "Reminder!"
+
+    "'Focus on work' will boost your EXP point gain. 'Chill/Relax' will decrease your stress level. 'Research' will increase your technical skills.
+    'Review own code/work' will increase your productivity gain. 'Socialize' will boost your co-worker relationships."
 
     menu weekly_focus_choices_2:
         "Focus on work":
@@ -461,11 +512,11 @@ label weekly_focus_2:
             "A week has advanced."
             $ calendar.focus(4) #Function that moves onto next week
 
-        "Socialize":
-            show socialize at center
-            "Your co-worker relationships have been boosted."
-            "A week has advanced."
-            $ calendar.focus(5) #Function that moves onto next week
+        #"Socialize":
+        #    show socialize at center
+        #    "Your co-worker relationships have been boosted."
+        #    "A week has advanced."
+        #    $ calendar.focus(5) #Function that moves onto next week
 
     jump meeting_with_higherups
 
@@ -584,8 +635,282 @@ label not_correct2:
 label week2_check:
     bosses "Let's check your progress in the project so far"
 
-#---------------------------------------------------------------------------------------------------------------------------------------
+    jump lead_lunch_and_learn
 
+
+
+# -------------------------------------------------------------- WEEK 3 ----------------------------------------------------------------
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Week 3 Event
+#Random Event 2: Mentor gives you the opportunity to lead the lunch and learn
+label lead_lunch_and_learn:
+
+    show bg club
+    with None
+
+    show mentor_smiling at left
+    with dissolve
+
+    m "Hey Sylvie, you've been here for a couple months now. How would you like to lead the next lunch and learn?"
+
+    show main_happy at center
+    with dissolve
+
+    r "What do I need to lead?"
+
+    show bg club
+    with None
+    show mentor_smiling at left
+    m "Well, this quarter, we'll be teaching about how connectors work within computer architecture to other folks within the company. What do you say?"
+
+
+    scene bg club
+    show main_concerned
+    with dissolve
+    "What do I do...?"
+
+    menu lunch_decision:
+        "Yes, I would love to!":
+            scene presentation_2
+            show main_happy
+            "Let's do it!"
+            jump lets_do_it
+
+        "Um, maybe not...":
+            "I don't think I'm ready to do that yet... I'd like to decline, please."
+            jump im_not_ready
+
+label lets_do_it:
+    scene presentation_2
+    show mentor_happy
+    m "Okay, sounds good! You're on for the next one. Here's a list of the topics."
+
+    show list
+    jump after_lets_do_it
+
+label after_lets_do_it:
+    scene office_background
+    with None
+
+    show mentor_smiling
+    m "Well, today's the big day! Good luck!"
+
+    scene presentation_2
+    show main_concerned
+    "I'm nervous. I hope I do well!"
+
+    scene presentation_2
+    show eileen happy at center
+    r "Alright, thank you everyone for coming. I will now begin the presentation."
+
+    scene presentation_2
+    "Here I present-"
+
+    scene office_background
+    show mentor_smile_closeup at left
+    hide mentor_smile_closeup
+    m "Wow, you did a great job! I'm sure I'll hear great responses from the higher ups."
+
+    scene office_background
+    show main_v_happy
+    r "Wow, I'm so glad. Thank you!"
+
+#this is for declining the lunch and learn
+label im_not_ready:
+    scene office_background
+    show mentor_slight_happy at left
+
+    m "That's fine! We can just take it slow."
+
+    show main_happy at center
+    r "Okay, thank you!"
+
+# -------------------------------------------------------------- WEEK 4 ----------------------------------------------------------------
+
+
+# -------------------------------------------------------------- WEEK 5 ----------------------------------------------------------------
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Week 5 Event
+#Random Event 3: Coworker asks you for help on their project
+
+label coworker_needs_help:
+
+    scene office_background
+    show coworker_happy at left
+    a "Hi! My name is Adrian. I don't think we've met before."
+
+    show main_happy at center
+    r "Hi! My name is Sylvie. It's nice to meet you. Which department are you from?"
+
+    a "I'm from the digital design department. I was actually wondering..."
+    hide coworker_happy
+    show coworker_cheeky at left
+
+    r "Yeah?"
+
+    scene office_background
+    show coworker_thumbs
+
+    a "Would you be able to help me do a design that incorporates architecture and aesthetics? We could team up for this!"
+
+    scene office_background
+    show main_happy at center
+    r "When should I let you know?"
+
+    scene office_background
+    show coworker_thumbs
+    a "Right now would be great! But please let me know by the end of the day."
+
+    menu decide_help_coworker:
+        "Yes, help Adrian!":
+            scene office_background
+            show main_happy "Yeah, just email me the information and we can schedule a meeting!"
+            jump yes_coworker
+
+        "No, don't help Adrian.":
+            scene office_background
+            show main_concerned
+            r "I think at the moment, I have too many tasks on my plate. I would love to help you at a later time though."
+            jump no_coworker
+
+label yes_coworker:
+    scene office_background
+    show coworker_happy
+    a "Great! I'll send you the details soon. Thanks!"
+
+    scene office_background
+    show main_happy
+    r " This is great. I can meet more coworkers and collaborate on different projects!"
+    jump end_ask_coworker
+
+label no_coworker:
+    scene office_background
+    show coworker_sigh
+    a "It's okay. It was worth a shot! I'll definitely keep in touch with you to see when you're next available."
+    jump end_ask_coworker
+
+label end_ask_coworker:
+    scene office_background
+    show main_happy
+    r "I'm glad I can see others in the company."
+
+# -------------------------------------------------------------- WEEK 6 ----------------------------------------------------------------
+
+
+
+# -------------------------------------------------------------- WEEK 7 ----------------------------------------------------------------
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Week 7 Event
+#Random event 4: EARTHQUAKE
+
+label earthquake:
+    scene office_background
+    with vpunch
+
+    scene office_background
+    with vpunch
+
+    show main_concerned
+    with vpunch
+    "OH NO AN EARTHQUAKE!!"
+
+    scene office_background
+    with vpunch
+    show mentor_shock
+    with vpunch
+    m "Just hang on! It'll be over in a second."
+
+    show main_concerned
+    with vpunch
+    "Okay, I'll try!"
+
+    scene office_background
+    with vpunch
+
+    scene office_background
+    show mentor_smiling at left
+    m "Okay, grab your stuff and we'll evacuate outside."
+
+    show main_concerned at center
+    r "Got it!"
+
+    scene bg club
+    with vpunch
+    show mentor_shock
+    m "Okay, once this dies down - everyone should go home for the day and stay safe at home!"
+
+    scene bg club
+    with vpunch
+    show main_concerned
+    r "Okay! Will do!"
+
+# -------------------------------------------------------------- WEEK 8 ----------------------------------------------------------------
+
+
+
+# -------------------------------------------------------------- WEEK 9 ----------------------------------------------------------------
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Week 7 Event
+#Random event 5: BEACH EPISODE
+
+label beach_episode:
+    scene office_background
+    show coworker_cheeky
+    a "Hey Sylviel! I'm back again. I was wondering..."
+
+    scene office_background
+    show main_happy at center
+    r "Hey Adrian! What's up?"
+
+    show coworker_happy at left
+    a "A couple of us from the office want to go to the beach this weekend. Are you interested?"
+
+    hide main_happy at center
+    show main_v_happy at center
+    r "Wow, thanks for the invite!! I would love to go. Send me the details when you can!"
+
+    jump beach_day
+
+label beach_day:
+    scene beach_day
+    show main_v_happy
+    r "Wow, it's so nice to be out here!"
+
+    scene beach_day
+    show coworker_shirtless
+    a "Hey, Sylvie!! Glad you could make it out!!"
+
+    scene beach_day
+    show main_v_happy
+    r "Thanks for inviting me!!"
+
+    scene beach_day
+    show mentor_smiling
+    m "Ey, Sylvie! You made it out! Don't worry about formalities while we're out here. All of us are just relaxing from the week."
+
+    scene beach_day
+    show main_v_happy
+    r "Okay, sounds good!"
+
+    "It's hard to do that though."
+
+    scene beach_night
+    with dissolve
+
+    show main_v_happy at left
+    show mentor_smiling
+    show coworker_shirtless at center
+
+    "This was a great day with everyone."
+
+# -------------------------------------------------------------- WEEK 10 ----------------------------------------------------------------
+
+
+#---------------------------------------------------------------------------------------------------------------------------------------
 label mentor_proud:
     scene bg club
     show mentor_smiling:

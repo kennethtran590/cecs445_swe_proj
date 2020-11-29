@@ -111,11 +111,11 @@ init python:
             product_add = product_add + random_product
 
             random_skill = random.randint(rangea, rangeb) # Technical Skills
-            character.product = character.product + random_skill
-            skills_add = product_add + random_skill
+            character.skills = character.skills + random_skill
+            skills_add = skills_add + random_skill
 
-            if((self.week % 2) == 0): # Money Generation Bi-weekly
-                character.money= character.money + 0
+            #if((self.week % 2) == 0): # Money Generation Bi-weekly
+            character.money= character.money + 230 # Income / Money
 
             # Add weekly choice based on user choice
             if (focus_choice == 1):
@@ -125,20 +125,18 @@ init python:
                 character.stressLvl = character.stressLvl - 10
                 stress_add = stress_add - 10
             if (focus_choice == 3):
-                character.skills = character.skills + random_product
+                character.skills = character.skills + random_skill
                 skills_add = skills_add + random_skill
             if (focus_choice == 4):
-                character.product = character.product + random_skill
+                character.product = character.product + random_product
                 product_add = product_add + random_product
-            #Relationships
-            #if (focus_choice == 5):
 
             # Level up check
             if (str(character.exp) == character.getMaxExpPerLevel()):
                 character.level = character.level + 1
-                renpy.notify("You have leveled up to Level " + str(character.level) + "!\nStat gain for Week " + str(self.week) + ": \n +" + str(exp_add) + " Exp Points" + "\n -" + str(stress_add) + " Stress" + "\n +" + str(product_add) + " Productivity" + "\n +" + str(skills_add) + " Technical Skill")
+                renpy.notify("You have leveled up to Level " + str(character.level) + "!\nStat gain for Week " + str(self.week) + ": \n +" + str(exp_add) + " Exp Points" + "\n +" + str(stress_add) + " Stress" + "\n +" + str(product_add) + " Productivity" + "\n +" + str(skills_add) + " Technical Skill" + "\n +$230")
             else:
-                renpy.notify("Stat gain for Week " + str(self.week) + ": \n +" + str(exp_add) + " Exp Points" + "\n -" + str(stress_add) + " Stress" + "\n +" + str(product_add) + " Productivity" + "\n +" + str(skills_add) + " Technical Skill")
+                renpy.notify("Stat gain for Week " + str(self.week) + ": \n +" + str(exp_add) + " Exp Points" + "\n +" + str(stress_add) + " Stress" + "\n +" + str(product_add) + " Productivity" + "\n +" + str(skills_add) + " Technical Skill" + "\n +$230")
 
         def next(self):
             self.week += 1
