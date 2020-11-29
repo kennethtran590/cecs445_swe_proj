@@ -697,13 +697,6 @@ label not_correct2:
 
 #---------------------------------------------------------------------------------------------------------------------------------------
 # Even Events have a checkpoint - Week 2 Check point
-# GISSELLE INSERT A CHECKPOINT THAT CHECKS THE PLAYER'S CURRENT STATS IF THEY MEET A CERTAIN NUMBER
-
-# pseudocode could be:
-# if character specific metric doesn't meet a certain number:
-#   trigger game over (might need to create a game over event/label)
-# else:
-#   continue
 
 label week2_check:
     bosses "Let's check your progress in the project so far"
