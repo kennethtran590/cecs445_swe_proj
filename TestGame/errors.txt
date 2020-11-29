@@ -2,13 +2,23 @@
 errors listed below, and try again.
 
 
-The label correct_answer is defined twice, at
-  File "game/script.rpy", line 327 and
-  File "game/script.rpy", line 401.
+File "game/script.rpy", line 1630: Line is indented, but the preceding one-line python statement statement does not expect a block. Please check this line's indentation.
+    jump mentor_proud
+    ^
 
-The label not_correct is defined twice, at
-  File "game/script.rpy", line 336 and
-  File "game/script.rpy", line 410.
+File "game/script.rpy", line 1665: Line is indented, but the preceding one-line python statement statement does not expect a block. Please check this line's indentation.
+    jump gameOver
+    ^
+
+File "game/script.rpy", line 1628: invalid syntax
+    ending = character_metrics.checkForWin():
+                                             ^
+    
+
+File "game/script.rpy", line 1663: invalid syntax
+    ending = character_metrics.checkForEnd():
+                                             ^
+    
 
 Ren'Py Version: Ren'Py 7.3.5.606
-Sun Nov 01 22:32:56 2020
+Sun Nov 29 15:45:53 2020

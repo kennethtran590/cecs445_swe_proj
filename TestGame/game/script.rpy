@@ -79,6 +79,7 @@ default adv_algr = Book("book", 'Advance Algorithms', 'A textbook providing adva
 # -------------------------------------------------------------- WEEK 1 ----------------------------------------------------------------
 label start:
 
+
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
@@ -599,34 +600,28 @@ label meeting_with_higherups:
     scene office_background
     with None
 
-    show sylvie blue normal:
+    show main_v_happy:
         xalign 0.0
         yalign 1.0
     with Dissolve(0.5)
 
-    show software_team:
+    show mentor_happy:
         xalign 0.75
         yalign 1.0
     with Dissolve(1.5)
 
-    show sylvie surprised:
-        xalign 0.0
-        yalign 1.0
 
 
-    sylvie "I wasn't expecting to see you guys here today."
 
-    bosses "We just wanted to step by and check on your project."
+    r "I wasn't expecting to see you guys here today."
 
-    show sylvie blue smile
+    m "I just wanted to stop by and check on your project."
 
-    sylvie "Awesome have you been checking in on the teams sprint report submissions?"
+    r "Awesome have you been checking in on the teams sprint report submissions?"
 
-    bosses "Of course and we really like what we see. Do you mind if ask you a couple questions?"
+    m "Of course and I really like what I see. Do you mind if ask you a couple questions?"
 
-    show sylvie blue smile
-
-    sylvie "Go ahead I don't mind!"
+    r "Go ahead I don't mind!"
 
     jump second_quiz_question
 
@@ -634,10 +629,8 @@ label second_quiz_question:
     show office_background
     with None
 
-    show software_team at left
-    with dissolve
 
-    bosses "Relating to sprint backlog, how is estimated work remaining updated?"
+    m "Relating to sprint backlog, how is estimated work remaining updated?"
 
     menu second_quiz_questions:
         "Monthly":
@@ -657,8 +650,8 @@ label second_quiz_question:
             jump correct_answer2
 
 label AGAIN_second_quiz_question:
-    show software_team
-    bosses "Relating to sprint backlog, how is estimated work remaining updated?"
+
+    m "Relating to sprint backlog, how is estimated work remaining updated?"
 
     menu second_quiz_questionsv2:
         "Monthly":
@@ -678,7 +671,7 @@ label AGAIN_second_quiz_question:
             jump correct_answer2
 
 label correct_answer2:
-    bosses "Good job! That's correct."
+    m "Good job! That's correct."
 
     "You have gained +5 Technical Skills Points"
 
@@ -688,10 +681,8 @@ label correct_answer2:
     jump week2_check
 
 label not_correct2:
-    show software_team at left
-    with dissolve
 
-    bosses "Not quite!"
+    m "Not quite!"
 
     jump AGAIN_second_quiz_question
 
@@ -990,9 +981,93 @@ label weekly_focus_4:
         #    "A week has advanced."
         #    $ calendar.focus(5) #Function that moves onto next week
 
-    jump lead_lunch_and_learn
-    # NEED STORY EVENT
+    jump sick_day
 
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Week 4 Event
+#Story Event 4: sick day
+label sick_day:
+    scene office_background
+    with None
+
+    show main_concerned:
+        xalign 0.0
+        yalign 1.0
+    with Dissolve(0.5)
+
+    show mentor_shock:
+        xalign 0.75
+        yalign 1.0
+    with Dissolve(1.5)
+
+
+    m "Oh no! You look terrible did you come into work sick?"
+
+    r "I don't want to let my team down I can still work."
+
+    m "You can't work if you're sick! It's terrible for your health and you could infect someone else. "
+
+    m "What did I tell you?"
+
+    jump third_quiz_question
+
+label third_quiz_question:
+    show office_background
+    with None
+
+
+    m "Should you come into the office if you're sick?"
+
+    menu third_quiz_questions:
+        "Working sick is fine because you can save sick days.":
+            "Is this correct?"
+            jump not_correct3
+
+        "Never be a quitter.":
+            "Is this correct?"
+            jump not_correct3
+
+        "The project is more important than my health.":
+            "Is this correct?"
+            jump not_correct3
+
+        "If I'm sick I should take care of myself and be considerate to my coworkers.":
+            "Is this correct?"
+            jump correct_answer3
+
+label AGAIN_third_quiz_question:
+
+    m "Should you come into the office if you're sick?"
+
+    menu third_quiz_questionsv2:
+        "Working sick is fine because you can save sick days.":
+            "Is this correct?"
+            jump not_correct3
+
+        "Never be a quitter.":
+            "Is this correct?"
+            jump not_correct3
+
+        "The project is more important than my health.":
+            "Is this correct?"
+            jump not_correct3
+
+        "If I'm sick I should take care of myself and be considerate to my coworkers.":
+            "Is this correct?"
+            jump correct_answer3
+
+label correct_answer3:
+    m "Good job! That's correct. Now go home and get some sleep"
+
+    jump weekend_event_4
+
+
+label not_correct3:
+    scene office_background
+    show mentor_shock
+    m "That is totally wrong!"
+
+    jump AGAIN_third_quiz_question
 #---------------------------------------------------------------------------------------------------------------------------------------
 # Weekend Event 4 / Week 4
 label weekend_event_4:
@@ -1158,15 +1233,7 @@ label end_ask_coworker:
     show main_happy
     r "I'm glad I can see others in the company."
 
-label end_check:
-    $ ending = character_metrics.checkForEnd()
-    $if ending == True:
-        jump gameOver
 
-label gameOver:
-    # I just kinda made it so if the person loses, they "get fired" and are taken to the start
-    bosses "YOU ARE FIRED!"
-    jump start
 
 # -------------------------------------------------------------- WEEK 6 ----------------------------------------------------------------
 
@@ -1219,8 +1286,51 @@ label weekly_focus_6:
         #    "A week has advanced."
         #    $ calendar.focus(5) #Function that moves onto next week
 
-    jump coworker_needs_help
+    jump ransomware
 
+# Week 6 Event
+#Story event event 3: Ransomware
+
+label ransomware:
+    scene presentation
+    show mentor_happy
+    m "Hey Sylvie, the reason why I scheduled this meeting today is to go over ransomware attacks."
+
+    scene presentation
+    show main_v_happy
+    r "ransomware? Could you remind me what that is again?"
+
+    scene presentation
+    show mentor_smile_closeup
+    m "No problem! That's why I'm here."
+
+    scene presentation
+    show mentor_surprise
+    m "Ransomware is malicious software that infects your computer and displays messages demanding a fee to be paid in order for your system to work again."
+
+    scene presentation
+    show mentor_surprise
+    m "Follow these three basic rules to avoid ransomware"
+
+    "1.Never click on unverified links"
+
+    "2.Do not open untrusted email attachments"
+
+    "3.Only download from sites you trust"
+
+    scene presentation
+    show main_v_happy
+    r "Okay, sounds good!"
+
+    "I'll make sure to be careful."
+
+    scene presentation
+    show main_v_happy at left
+    show mentor_smiling at center
+
+    m "All right now get back to work and be safe!"
+
+    jump weekly_focus_7
 
 # -------------------------------------------------------------- WEEK 7 ----------------------------------------------------------------
 
@@ -1371,36 +1481,39 @@ label weekly_focus_8:
         #    "A week has advanced."
         #    $ calendar.focus(5) #Function that moves onto next week
 
-    jump mentor_proud
+    jump turn_in
 
 #---------------------------------------------------------------------------------------------------------------------------------------
-label mentor_proud:
+# Week 8 Event
+#Story event: Turn in day
+label turn_in:
     scene bg club
     show mentor_smiling:
         xalign 0.75
         yalign 1.0
     with Dissolve(0.5)
 
-    show sylvie blue normal:
+    show main_v_happy:
         xalign 0.0
         yalign 1.0
     with Dissolve(0.7)
 
-    m "I'm just so proud of you and all that you've accomplish"
+    m "Well after your final review next week you will be turning in your project"
 
     show mentor_surprise:
         xalign 0.75
         yalign 1.0
 
-    m "I have nothing else to teach you I'm porud to announce you are no longer an entry-level developer"
+    m "Now that I'm thinking about it you are practically done how do you feel?"
+
+    r "Like a senior developer. It's all thanks to you!"
 
     scene bg club
-    show sylvie blue smile at center:
+    show mentor_smiling at center:
 
-    sylvie "It's all thanks to you! This is only the beginning of my journey I'm sure their will be higher mountains in the future"
+    m "Maybe we will have a little suprise next week"
 
-    # jump weekend event
-
+    jump weekly_focus_9
 
 # -------------------------------------------------------------- WEEK 9 ----------------------------------------------------------------
 
@@ -1512,9 +1625,47 @@ label beach_day:
 # -------------------------------------------------------------- WEEK 10 ----------------------------------------------------------------
 
 #check to see if game has been won
-label check_for_Winning:
-    $ ending = character_metrics.checkForWin()
-    $if ending == True:
-        jump mentor_proud
-    $else:
-        jump gameOver
+#label check_for_Winning:
+#    $ ending = character_metrics.checkForWin():
+#    $if ending == True:
+#       jump mentor_proud
+   #$else:
+    #   jump gameOver
+
+label mentor_proud:
+    scene bg club
+    show mentor_smiling:
+        xalign 0.75
+        yalign 1.0
+    with Dissolve(0.5)
+
+    show main_v_happy:
+        xalign 0.0
+        yalign 1.0
+    with Dissolve(0.7)
+
+    m "The higher ups loved your project! I'm just so proud of you and all that you've accomplish"
+
+    show mentor_surprise:
+        xalign 0.75
+        yalign 1.0
+
+    m "I have nothing else to teach you I'm porud to announce you are no longer an entry-level developer"
+
+    scene bg club
+    show main_v_happy at center:
+
+    r "It's all thanks to you! This is only the beginning of my journey I'm sure their will be higher mountains in the future"
+
+    #GAME IS COMPLETE
+
+
+#label end_check:
+#    $ ending = character_metrics.checkForEnd():
+#    $if ending == True:
+#        jump gameOver
+
+#label gameOver:
+    # I just kinda made it so if the person loses, they "get fired" and are taken to the start
+#    bosses "YOU ARE FIRED!"
+#    jump start
