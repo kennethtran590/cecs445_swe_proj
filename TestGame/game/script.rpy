@@ -297,31 +297,31 @@ label weekly_focus_1:
         "Focus on work":
             show work hard at center
             "Your EXP points are boosted for the week."
-            "A week has advanced."
+
             $ calendar.focus(1) #Function that moves onto next week
 
         "Chill/Relax":
             show chill relax at center
             "Your stress level has decreased."
-            "A week has advanced."
+
             $ calendar.focus(2) #Function that moves onto next week
 
         "Research":
             show research at center
             "Your technical skill has been boosted."
-            "A week has advanced."
+
             $ calendar.focus(3) #Function that moves onto next week
 
         "Review own code/work":
             show review at center
             "Your productivity has been boosted."
-            "A week has advanced."
+
             $ calendar.focus(4) #Function that moves onto next week
 
         #"Socialize":
             #show socialize at center
             #"Your co-worker relationships have been boosted."
-            #"A week has advanced."
+            #
             #$ calendar.focus(5) #Function that moves onto next week
 
     system "Next, your mentor will walk you through how to answer questions in the game!"
@@ -449,10 +449,6 @@ label AGAIN_first_quiz_question:
 label correct_answer:
     m "Good job! That's correct."
 
-    "You have gained +5 Technical Skills Points"
-
-    $ character_metrics.skills = character_metrics.skills + 5
-
     jump after_menu_1
 
 label not_correct:
@@ -510,20 +506,7 @@ label weekend_event_1:
             jump home_1
 
 #---------------------------------------------------------------------------------------------------------------------------------------
-# Store Event 1 / Week 1
-label store_1:
-
-    window hide
-    pause
-
-    show screen shop_screen
-
-    window show
-
-    jump home_1
-
-#---------------------------------------------------------------------------------------------------------------------------------------
-# Store Event 1 / Week 1
+# Home Event 1 / Week 1
 label home_1:
     hide screen shop_screen
 
@@ -532,7 +515,7 @@ label home_1:
 
     "After a busy week, you head home to rest up."
 
-    "You learned a lot about software engineering in the first week and are eager for what's to come in the future!"
+    "You learned a lot about software engineering this week and are eager for what's to come in the future!"
 
     $ calendar.next() # Change to Week 2
 
@@ -565,31 +548,31 @@ label weekly_focus_2:
         "Focus on work":
             show work hard at center
             "Your EXP points are boosted for the week."
-            "A week has advanced."
+
             $ calendar.focus(1) #Function that moves onto next week
 
         "Chill/Relax":
             show chill relax at center
             "Your stress level has decreased."
-            "A week has advanced."
+
             $ calendar.focus(2) #Function that moves onto next week
 
         "Research":
             show research at center
             "Your technical skill has been boosted."
-            "A week has advanced."
+
             $ calendar.focus(3) #Function that moves onto next week
 
         "Review own code/work":
             show review at center
             "Your productivity has been boosted."
-            "A week has advanced."
+
             $ calendar.focus(4) #Function that moves onto next week
 
         #"Socialize":
         #    show socialize at center
         #    "Your co-worker relationships have been boosted."
-        #    "A week has advanced."
+        #
         #    $ calendar.focus(5) #Function that moves onto next week
 
     jump meeting_with_higherups
@@ -673,10 +656,6 @@ label AGAIN_second_quiz_question:
 label correct_answer2:
     m "Good job! That's correct."
 
-    "You have gained +5 Technical Skills Points"
-
-    $ character_metrics.skills = character_metrics.skills + 5
-
     #needs jump statement from where you left off
     jump week2_check
 
@@ -690,7 +669,6 @@ label not_correct2:
 # Even Events have a checkpoint - Week 2 Check point
 
 label week2_check:
-    bosses "Let's check your progress in the project so far"
 
     # After event is done
     "That wraps it up for the work week. You pack up your things and get ready to head home."
@@ -709,32 +687,26 @@ label weekend_event_2:
     menu ask_store_2:
         "Yes, head to the store.":
             "You ready your wallet and head to the store!"
-            jump store_2
+            window hide
+            show screen shop_screen
+            pause
+            jump home_2
 
         "No, head home.":
             "You decide to save money and head home."
             jump home_2
 
 #---------------------------------------------------------------------------------------------------------------------------------------
-# Store Event 2 / Week 2
-label store_2:
-
-    #show screen shop_screen
-
-    "Insert store"
-
-    jump home_2
-
-#---------------------------------------------------------------------------------------------------------------------------------------
-# Store Event 2 / Week 2
+# Home Event 2 / Week 2
 label home_2:
+    hide screen shop_screen
 
     scene home
     with dissolve
 
     "After a busy week, you head home to rest up."
 
-    "You learned a lot about software engineering in the first week and are eager for what's to come in the future!"
+    "You learned a lot about software engineering this week and are eager for what's to come in the future!"
 
     $ calendar.next() # Change to Week 3
 
@@ -766,31 +738,31 @@ label weekly_focus_3:
         "Focus on work":
             show work hard at center
             "Your EXP points are boosted for the week."
-            "A week has advanced."
+
             $ calendar.focus(1) #Function that moves onto next week
 
         "Chill/Relax":
             show chill relax at center
             "Your stress level has decreased."
-            "A week has advanced."
+
             $ calendar.focus(2) #Function that moves onto next week
 
         "Research":
             show research at center
             "Your technical skill has been boosted."
-            "A week has advanced."
+
             $ calendar.focus(3) #Function that moves onto next week
 
         "Review own code/work":
             show review at center
             "Your productivity has been boosted."
-            "A week has advanced."
+
             $ calendar.focus(4) #Function that moves onto next week
 
         #"Socialize":
         #    show socialize at center
         #    "Your co-worker relationships have been boosted."
-        #    "A week has advanced."
+        #
         #    $ calendar.focus(5) #Function that moves onto next week
 
     jump lead_lunch_and_learn
@@ -841,6 +813,7 @@ label lets_do_it:
     m "Okay, sounds good! You're on for the next one. Here's a list of the topics."
 
     show list
+    pause
     jump after_lets_do_it
 
 label after_lets_do_it:
@@ -882,6 +855,8 @@ label im_not_ready:
     show main_happy at center
     r "Okay, thank you!"
 
+    "That wraps it up for the work week. You pack up your things and get ready to head home."
+
     jump weekend_event_3
 
 #---------------------------------------------------------------------------------------------------------------------------------------
@@ -897,32 +872,26 @@ label weekend_event_3:
     menu ask_store_3:
         "Yes, head to the store.":
             "You ready your wallet and head to the store!"
-            jump store_3
+            window hide
+            show screen shop_screen
+            pause
+            jump home_3
 
         "No, head home.":
             "You decide to save money and head home."
             jump home_3
 
 #---------------------------------------------------------------------------------------------------------------------------------------
-# Store Event 3 / Week 3
-label store_3:
-
-    #show screen shop_screen
-
-    "Insert store"
-
-    jump home_3
-
-#---------------------------------------------------------------------------------------------------------------------------------------
-# Store Event 3 / Week 3
+# Home Event 3 / Week 3
 label home_3:
+    hide screen shop_screen
 
     scene home
     with dissolve
 
     "After a busy week, you head home to rest up."
 
-    "You learned a lot about software engineering in the first week and are eager for what's to come in the future!"
+    "You learned a lot about software engineering this week and are eager for what's to come in the future!"
 
     $ calendar.next() # Change to Week 4
 
@@ -954,31 +923,31 @@ label weekly_focus_4:
         "Focus on work":
             show work hard at center
             "Your EXP points are boosted for the week."
-            "A week has advanced."
+
             $ calendar.focus(1) #Function that moves onto next week
 
         "Chill/Relax":
             show chill relax at center
             "Your stress level has decreased."
-            "A week has advanced."
+
             $ calendar.focus(2) #Function that moves onto next week
 
         "Research":
             show research at center
             "Your technical skill has been boosted."
-            "A week has advanced."
+
             $ calendar.focus(3) #Function that moves onto next week
 
         "Review own code/work":
             show review at center
             "Your productivity has been boosted."
-            "A week has advanced."
+
             $ calendar.focus(4) #Function that moves onto next week
 
         #"Socialize":
         #    show socialize at center
         #    "Your co-worker relationships have been boosted."
-        #    "A week has advanced."
+        #
         #    $ calendar.focus(5) #Function that moves onto next week
 
     jump sick_day
@@ -1068,6 +1037,7 @@ label not_correct3:
     m "That is totally wrong!"
 
     jump AGAIN_third_quiz_question
+
 #---------------------------------------------------------------------------------------------------------------------------------------
 # Weekend Event 4 / Week 4
 label weekend_event_4:
@@ -1081,32 +1051,26 @@ label weekend_event_4:
     menu ask_store_4:
         "Yes, head to the store.":
             "You ready your wallet and head to the store!"
-            jump store_4
+            window hide
+            show screen shop_screen
+            pause
+            jump home_4
 
         "No, head home.":
             "You decide to save money and head home."
             jump home_4
 
 #---------------------------------------------------------------------------------------------------------------------------------------
-# Store Event 4 / Week 4
-label store_4:
-
-    #show screen shop_screen
-
-    "Insert store"
-
-    jump home_4
-
-#---------------------------------------------------------------------------------------------------------------------------------------
-# Store Event 4 / Week 4
+# Home Event 4 / Week 4
 label home_4:
+    hide screen shop_screen
 
     scene home
     with dissolve
 
     "After a busy week, you head home to rest up."
 
-    "You learned a lot about software engineering in the first week and are eager for what's to come in the future!"
+    "You learned a lot about software engineering this week and are eager for what's to come in the future!"
 
     $ calendar.next() # Change to Week 5
 
@@ -1139,31 +1103,31 @@ label weekly_focus_5:
         "Focus on work":
             show work hard at center
             "Your EXP points are boosted for the week."
-            "A week has advanced."
+
             $ calendar.focus(1) #Function that moves onto next week
 
         "Chill/Relax":
             show chill relax at center
             "Your stress level has decreased."
-            "A week has advanced."
+
             $ calendar.focus(2) #Function that moves onto next week
 
         "Research":
             show research at center
             "Your technical skill has been boosted."
-            "A week has advanced."
+
             $ calendar.focus(3) #Function that moves onto next week
 
         "Review own code/work":
             show review at center
             "Your productivity has been boosted."
-            "A week has advanced."
+
             $ calendar.focus(4) #Function that moves onto next week
 
         #"Socialize":
         #    show socialize at center
         #    "Your co-worker relationships have been boosted."
-        #    "A week has advanced."
+        #
         #    $ calendar.focus(5) #Function that moves onto next week
 
     jump coworker_needs_help
@@ -1233,6 +1197,49 @@ label end_ask_coworker:
     show main_happy
     r "I'm glad I can see others in the company."
 
+    "That wraps it up for the work week. You pack up your things and get ready to head home."
+    jump weekend_event_5
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Weekend Event 5 / Week 5
+label weekend_event_5:
+
+    scene bg club
+
+    "As you head home you wonder if you should stop by the store to buy more items..."
+
+    "Do you want to head to the store?"
+
+    menu ask_store_5:
+        "Yes, head to the store.":
+            "You ready your wallet and head to the store!"
+            window hide
+            show screen shop_screen
+            pause
+            jump home_5
+
+        "No, head home.":
+            "You decide to save money and head home."
+            jump home_5
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Home Event 5 / Week 5
+label home_5:
+    hide screen shop_screen
+
+    scene home
+    with dissolve
+
+    "After a busy week, you head home to rest up."
+
+    "You learned a lot about software engineering this week and are eager for what's to come in the future!"
+
+    $ calendar.next() # Change to Week 6
+
+    $ renpy.notify("A week has advanced.")
+
+    jump weekly_focus_6
+
 
 
 # -------------------------------------------------------------- WEEK 6 ----------------------------------------------------------------
@@ -1259,31 +1266,31 @@ label weekly_focus_6:
         "Focus on work":
             show work hard at center
             "Your EXP points are boosted for the week."
-            "A week has advanced."
+
             $ calendar.focus(1) #Function that moves onto next week
 
         "Chill/Relax":
             show chill relax at center
             "Your stress level has decreased."
-            "A week has advanced."
+
             $ calendar.focus(2) #Function that moves onto next week
 
         "Research":
             show research at center
             "Your technical skill has been boosted."
-            "A week has advanced."
+
             $ calendar.focus(3) #Function that moves onto next week
 
         "Review own code/work":
             show review at center
             "Your productivity has been boosted."
-            "A week has advanced."
+
             $ calendar.focus(4) #Function that moves onto next week
 
         #"Socialize":
         #    show socialize at center
         #    "Your co-worker relationships have been boosted."
-        #    "A week has advanced."
+        #
         #    $ calendar.focus(5) #Function that moves onto next week
 
     jump ransomware
@@ -1330,6 +1337,46 @@ label ransomware:
 
     m "All right now get back to work and be safe!"
 
+    jump weekend_event_6
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Weekend Event 6 / Week 6
+label weekend_event_6:
+
+    scene bg club
+
+    "As you head home you wonder if you should stop by the store to buy more items..."
+
+    "Do you want to head to the store?"
+
+    menu ask_store_6:
+        "Yes, head to the store.":
+            "You ready your wallet and head to the store!"
+            window hide
+            show screen shop_screen
+            pause
+            jump home_6
+
+        "No, head home.":
+            "You decide to save money and head home."
+            jump home_6
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Home Event 6 / Week 6
+label home_6:
+    hide screen shop_screen
+
+    scene home
+    with dissolve
+
+    "After a busy week, you head home to rest up."
+
+    "You learned a lot about software engineering this week and are eager for what's to come in the future!"
+
+    $ calendar.next() # Change to Week 7
+
+    $ renpy.notify("A week has advanced.")
+
     jump weekly_focus_7
 
 # -------------------------------------------------------------- WEEK 7 ----------------------------------------------------------------
@@ -1356,31 +1403,31 @@ label weekly_focus_7:
         "Focus on work":
             show work hard at center
             "Your EXP points are boosted for the week."
-            "A week has advanced."
+
             $ calendar.focus(1) #Function that moves onto next week
 
         "Chill/Relax":
             show chill relax at center
             "Your stress level has decreased."
-            "A week has advanced."
+
             $ calendar.focus(2) #Function that moves onto next week
 
         "Research":
             show research at center
             "Your technical skill has been boosted."
-            "A week has advanced."
+
             $ calendar.focus(3) #Function that moves onto next week
 
         "Review own code/work":
             show review at center
             "Your productivity has been boosted."
-            "A week has advanced."
+
             $ calendar.focus(4) #Function that moves onto next week
 
         #"Socialize":
         #    show socialize at center
         #    "Your co-worker relationships have been boosted."
-        #    "A week has advanced."
+        #
         #    $ calendar.focus(5) #Function that moves onto next week
 
     jump earthquake
@@ -1406,6 +1453,7 @@ label earthquake:
     with vpunch
     m "Just hang on! It'll be over in a second."
 
+    scene office_background
     show main_concerned
     with vpunch
     "Okay, I'll try!"
@@ -1429,6 +1477,48 @@ label earthquake:
     with vpunch
     show main_concerned
     r "Okay! Will do!"
+
+    jump weekend_event_7
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Weekend Event 7 / Week 7
+label weekend_event_7:
+
+    scene bg club
+
+    "As you head home you wonder if you should stop by the store to buy more items..."
+
+    "Do you want to head to the store?"
+
+    menu ask_store_7:
+        "Yes, head to the store.":
+            "You ready your wallet and head to the store!"
+            window hide
+            show screen shop_screen
+            pause
+            jump home_7
+
+        "No, head home.":
+            "You decide to save money and head home."
+            jump home_7
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Home Event 7 / Week 7
+label home_7:
+    hide screen shop_screen
+
+    scene home
+    with dissolve
+
+    "After a busy week, you head home to rest up."
+
+    "You learned a lot about software engineering this week and are eager for what's to come in the future!"
+
+    $ calendar.next() # Change to Week 8
+
+    $ renpy.notify("A week has advanced.")
+
+    jump weekly_focus_8
 
 # -------------------------------------------------------------- WEEK 8 ----------------------------------------------------------------
 
@@ -1454,31 +1544,31 @@ label weekly_focus_8:
         "Focus on work":
             show work hard at center
             "Your EXP points are boosted for the week."
-            "A week has advanced."
+
             $ calendar.focus(1) #Function that moves onto next week
 
         "Chill/Relax":
             show chill relax at center
             "Your stress level has decreased."
-            "A week has advanced."
+
             $ calendar.focus(2) #Function that moves onto next week
 
         "Research":
             show research at center
             "Your technical skill has been boosted."
-            "A week has advanced."
+
             $ calendar.focus(3) #Function that moves onto next week
 
         "Review own code/work":
             show review at center
             "Your productivity has been boosted."
-            "A week has advanced."
+
             $ calendar.focus(4) #Function that moves onto next week
 
         #"Socialize":
         #    show socialize at center
         #    "Your co-worker relationships have been boosted."
-        #    "A week has advanced."
+        #
         #    $ calendar.focus(5) #Function that moves onto next week
 
     jump turn_in
@@ -1513,6 +1603,47 @@ label turn_in:
 
     m "Maybe we will have a little suprise next week"
 
+    "That wraps it up for the work week. You pack up your things and get ready to head home."
+    jump weekend_event_8
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Weekend Event 8 / Week 8
+label weekend_event_8:
+
+    scene bg club
+
+    "As you head home you wonder if you should stop by the store to buy more items..."
+
+    "Do you want to head to the store?"
+
+    menu ask_store_8:
+        "Yes, head to the store.":
+            "You ready your wallet and head to the store!"
+            window hide
+            show screen shop_screen
+            pause
+            jump home_8
+
+        "No, head home.":
+            "You decide to save money and head home."
+            jump home_8
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Home Event 8 / Week 8
+label home_8:
+    hide screen shop_screen
+
+    scene home
+    with dissolve
+
+    "After a busy week, you head home to rest up."
+
+    "You learned a lot about software engineering this week and are eager for what's to come in the future!"
+
+    $ calendar.next() # Change to Week 9
+
+    $ renpy.notify("A week has advanced.")
+
     jump weekly_focus_9
 
 # -------------------------------------------------------------- WEEK 9 ----------------------------------------------------------------
@@ -1539,31 +1670,31 @@ label weekly_focus_9:
         "Focus on work":
             show work hard at center
             "Your EXP points are boosted for the week."
-            "A week has advanced."
+
             $ calendar.focus(1) #Function that moves onto next week
 
         "Chill/Relax":
             show chill relax at center
             "Your stress level has decreased."
-            "A week has advanced."
+
             $ calendar.focus(2) #Function that moves onto next week
 
         "Research":
             show research at center
             "Your technical skill has been boosted."
-            "A week has advanced."
+
             $ calendar.focus(3) #Function that moves onto next week
 
         "Review own code/work":
             show review at center
             "Your productivity has been boosted."
-            "A week has advanced."
+
             $ calendar.focus(4) #Function that moves onto next week
 
         #"Socialize":
         #    show socialize at center
         #    "Your co-worker relationships have been boosted."
-        #    "A week has advanced."
+        #
         #    $ calendar.focus(5) #Function that moves onto next week
 
     jump beach_episode
@@ -1617,10 +1748,56 @@ label beach_day:
     with dissolve
 
     show main_v_happy at left
-    show mentor_smiling
-    show coworker_shirtless at center
+    show mentor_smiling:
+        xalign 0.80
+        yalign 1.0
+    show coworker_shirtless:
+        xalign 0.4
+        yalign 1.0
 
     "This was a great day with everyone."
+
+    jump weekend_event_9
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Weekend Event 9 / Week 9
+label weekend_event_9:
+
+    scene bg club
+
+    "As you head home you wonder if you should stop by the store to buy more items..."
+
+    "Do you want to head to the store?"
+
+    menu ask_store_9:
+        "Yes, head to the store.":
+            "You ready your wallet and head to the store!"
+            window hide
+            show screen shop_screen
+            pause
+            jump home_9
+
+        "No, head home.":
+            "You decide to save money and head home."
+            jump home_9
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Home Event 9 / Week 9
+label home_9:
+    hide screen shop_screen
+
+    scene home
+    with dissolve
+
+    "After a busy week, you head home to rest up."
+
+    "The project is finishing up and you are excited for what your mentor thinks of the final project!"
+
+    $ calendar.next() # Change to Week 10
+
+    $ renpy.notify("A week has advanced.")
+
+    jump mentor_proud
 
 # -------------------------------------------------------------- WEEK 10 ----------------------------------------------------------------
 
@@ -1650,7 +1827,7 @@ label mentor_proud:
         xalign 0.75
         yalign 1.0
 
-    m "I have nothing else to teach you I'm porud to announce you are no longer an entry-level developer"
+    m "I have nothing else to teach you I'm proud to announce you are no longer an entry-level developer"
 
     scene bg club
     show main_v_happy at center:

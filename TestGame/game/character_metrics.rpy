@@ -165,14 +165,14 @@ init python:
 
         def getMaxExpPerLevel(self):
             if (self.level == 1):
-                return "1000";
+                return 1000;
             if (self.level == 2):
-                return "2000";
+                return 2000;
             if (self.level == 3):
-                return "3000";
+                return 3000;
             if (self.level == 4):
-                return "1000";
+                return 1000;
             if (self.level == 5):
-                return "5000";
+                return 5000;
 
     character = character_metrics()

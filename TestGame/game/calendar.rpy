@@ -132,7 +132,7 @@ init python:
                 product_add = product_add + random_product
 
             # Level up check
-            if (str(character.exp) == character.getMaxExpPerLevel()):
+            if (character.exp >= character.getMaxExpPerLevel()):
                 character.level = character.level + 1
                 renpy.notify("You have leveled up to Level " + str(character.level) + "!\nStat gain for Week " + str(self.week) + ": \n +" + str(exp_add) + " Exp Points" + "\n +" + str(stress_add) + " Stress" + "\n +" + str(product_add) + " Productivity" + "\n +" + str(skills_add) + " Technical Skill" + "\n +$230")
             else:
@@ -173,7 +173,7 @@ screen calendar(date_inf):
                 spacing 8 # Makes sure there's a space between the two text-items, so that it doesn't read 'august2014' but 'august 2014'.
             text "" size 10
             text "Level " + str(character.level) size 16 xalign 0.5 #character.level
-            text "Exp Points: " + str(character.exp) + " / " + character.getMaxExpPerLevel() size 10 xalign 0.5 #character.exp.get()
+            text "Exp Points: " + str(character.exp) + " / " + str(character.getMaxExpPerLevel()) size 10 xalign 0.5 #character.exp.get()
             text "Technical Skills: " + str(character.skills) size 12 xalign 0.5 #character.skill
             text "Productivity: " + str(character.product) size 12 xalign 0.5 #character.product.get()
             text "Stress: " + str(character.stressLvl) size 12 xalign 0.5 #character.stressLvl.get()
