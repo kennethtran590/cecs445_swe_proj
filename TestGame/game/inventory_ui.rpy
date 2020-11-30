@@ -17,9 +17,11 @@ screen inventory_screen:
             xmaximum 300
             spacing 10
             label "Character Stats" xalign 0.5 text_size 35
+            label "Level: [character.level]"
             label "Productivity: [character.product]"
             label "Stress: [character.stressLvl]"
             label "Technical Skills: [character.skills]"
+            label "$[character.money]"
 
             #equips
             frame:
@@ -129,7 +131,6 @@ screen inventory_screen:
                     textbutton "Sell for $[selected_item.sell]" action [RemoveFromSet(inventory, selected_item), SetVariable("selected_item", None), Function(character.addMoney, selected_item.sell)]
 
     textbutton "Return":
-        #action [Return(), SetVariable("selected_item", None)]
         action Return()
         xalign 0.5
         yalign 0.95
@@ -138,4 +139,3 @@ screen show_inventory:
     vbox:
         spacing 5
         imagebutton idle "bag" action ShowMenu("inventory_screen")
-        #imagebutton idle "shop" action ShowMenu("shop_screen")
