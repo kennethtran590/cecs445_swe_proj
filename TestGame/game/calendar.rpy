@@ -99,8 +99,8 @@ init python:
             skills_old = character.skills
 
             # Add numbers to character metrics
-            character.exp = character.exp + 300 # EXP
-            exp_add = exp_add + 300
+            character.exp = character.exp + 400 # EXP
+            exp_add = exp_add + 400
 
             random_stress = random.randint(1, 5) # Stress
             character.stressLvl = character.stressLvl + random_stress
@@ -115,7 +115,7 @@ init python:
             skills_add = skills_add + random_skill
 
             #if((self.week % 2) == 0): # Money Generation Bi-weekly
-            character.money= character.money + 230 # Income / Money
+            character.money= character.money + 150 # Income / Money
 
             # Add weekly choice based on user choice
             if (focus_choice == 1):
@@ -134,9 +134,9 @@ init python:
             # Level up check
             if (character.exp >= character.getMaxExpPerLevel()):
                 character.level = character.level + 1
-                renpy.notify("You have leveled up to Level " + str(character.level) + "!\nStat gain for Week " + str(self.week) + ": \n +" + str(exp_add) + " Exp Points" + "\n +" + str(stress_add) + " Stress" + "\n +" + str(product_add) + " Productivity" + "\n +" + str(skills_add) + " Technical Skill" + "\n +$230")
+                renpy.notify("You have leveled up to Level " + str(character.level) + "!\nStat gain for Week " + str(self.week) + ": \n +" + str(exp_add) + " Exp Points" + "\n +" + str(stress_add) + " Stress" + "\n +" + str(product_add) + " Productivity" + "\n +" + str(skills_add) + " Technical Skill" + "\n +$150")
             else:
-                renpy.notify("Stat gain for Week " + str(self.week) + ": \n +" + str(exp_add) + " Exp Points" + "\n +" + str(stress_add) + " Stress" + "\n +" + str(product_add) + " Productivity" + "\n +" + str(skills_add) + " Technical Skill" + "\n +$230")
+                renpy.notify("Stat gain for Week " + str(self.week) + ": \n +" + str(exp_add) + " Exp Points" + "\n +" + str(stress_add) + " Stress" + "\n +" + str(product_add) + " Productivity" + "\n +" + str(skills_add) + " Technical Skill" + "\n +$150")
 
         def next(self):
             self.week += 1

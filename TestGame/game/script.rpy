@@ -346,8 +346,6 @@ label part1_training:
 
     jump training_with_mentor
 
-    return
-
 label training_with_mentor:
     scene office_background
     show mentor_happy at left
@@ -471,7 +469,7 @@ label after_menu_1:
 
     "As you end your work week, you will be able to visit a store on the weekends!"
 
-    "You will gain $230 for your work on the project every week."
+    "You will gain $150 for your work on the project every week."
 
     "At the end of the weekend, you can be able to go to a store to purchase items that will help you boost your skills."
 
@@ -1239,9 +1237,15 @@ label home_5:
 
     $ renpy.notify("A week has advanced.")
 
-    jump weekly_focus_6
+    jump end_check
 
-
+# Midpoint checkpoint
+label end_check:
+    $ ending = character.checkForEnd()
+    if ending == True:
+        jump gameOver
+    else:
+        jump weekly_focus_6
 
 # -------------------------------------------------------------- WEEK 6 ----------------------------------------------------------------
 
@@ -1306,7 +1310,7 @@ label ransomware:
 
     scene presentation
     show main_v_happy
-    r "ransomware? Could you remind me what that is again?"
+    r "Ransomware? Could you remind me what that is again?"
 
     scene presentation
     show mentor_smile_closeup
@@ -1320,11 +1324,11 @@ label ransomware:
     show mentor_surprise
     m "Follow these three basic rules to avoid ransomware"
 
-    "1.Never click on unverified links"
+    "1. Never click on unverified links"
 
-    "2.Do not open untrusted email attachments"
+    "2. Do not open untrusted email attachments"
 
-    "3.Only download from sites you trust"
+    "3. Only download from sites you trust"
 
     scene presentation
     show main_v_happy
@@ -1798,17 +1802,17 @@ label home_9:
 
     $ renpy.notify("A week has advanced.")
 
-    jump mentor_proud
+    jump check_for_Winning
 
 # -------------------------------------------------------------- WEEK 10 ----------------------------------------------------------------
 
 #check to see if game has been won
-#label check_for_Winning:
-#    $ ending = character_metrics.checkForWin():
-#    $if ending == True:
-#       jump mentor_proud
-   #$else:
-    #   jump gameOver
+label check_for_Winning:
+    $ ending = character.checkForWin()
+    if ending == True:
+       jump mentor_proud
+    else:
+       jump gameOver
 
 label mentor_proud:
     scene bg club
@@ -1835,15 +1839,25 @@ label mentor_proud:
 
     r "It's all thanks to you! This is only the beginning of my journey I'm sure their will be higher mountains in the future"
 
+    scene winning
+    pause
+
+    return
+
     #GAME IS COMPLETE
 
 
-#label end_check:
-#    $ ending = character_metrics.checkForEnd():
-#    $if ending == True:
-#        jump gameOver
+label gameOver:
+    # At game over, the game returns to the main menu
+    scene bg club
+    "You enter the office and feel the tension in the air."
 
-#label gameOver:
-    # I just kinda made it so if the person loses, they "get fired" and are taken to the start
-#    bosses "YOU ARE FIRED!"
-#    jump start
+    scene office_background
+    bosses "We need to talk..."
+    bosses "You did not meet the required progress at this point of the project."
+    bosses "YOU ARE FIRED!"
+
+    scene gameover
+    pause
+
+    return

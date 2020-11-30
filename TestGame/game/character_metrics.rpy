@@ -132,23 +132,23 @@ init python:
             stressLvl += 5
             week= [0,0,0,0,0]
             return endOfWeek
-        def checkForEnd():
-            ending = True
-            if exp >= 2500:
-                ending = False
-            if skills > 1:
-                ending = False
-            if product > 1:
-                ending = False
+        def checkForEnd(self):
+            ending = False
+            if self.exp <= 2000:
+                ending = True
+            if self.skills < 15:
+                ending = True
+            if self.product < 15:
+                ending = True
             return ending
-        def checkForWin():
-            ending = True
-            if exp <= 5000:
-                ending = False
-            if skills <= 200:
-                ending = False
-            if product <= 200:
-                ending = False
+        def checkForWin(self):
+            ending = False
+            if self.exp <= 4000:
+                ending = True
+            if self.skills <= 200:
+                ending = True
+            if self.product <= 200:
+                ending = True
             return ending
         # Returns the range of the randomly generated number that the player
         # gets every week depending on their level.
@@ -172,8 +172,10 @@ init python:
             if (self.level == 3):
                 return 3000;
             if (self.level == 4):
-                return 1000;
+                return 4000;
             if (self.level == 5):
+                return 5000;
+            if (self.level >= 5):
                 return 5000;
 
         #item methods
