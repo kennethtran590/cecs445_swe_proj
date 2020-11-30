@@ -14,7 +14,7 @@ screen shop_screen:
             xmaximum 300
             spacing 10
             label "Welcome. How can I help you?" text_size 35 text_color "#000000"
-            label "Balance: $[player.money]" text_color "#000000"
+            label "Balance: $[character.money]" text_color "#000000"
             add "shopkeeper" yanchor -.15
 
         #grid
@@ -78,18 +78,18 @@ screen shop_screen:
                     label "Sell Price: $[selected_shop_item.sell]" xalign 0.5 text_size 15 text_color "#000000"
 
                 if isinstance(selected_shop_item, Equipment):
-                    if selected_shop_item.buy <= player.money:
-                        textbutton "Buy for $[selected_shop_item.buy]" action [AddToSet(inventory, selected_shop_item), Function(player.subMoney, selected_shop_item.buy), SetVariable("selected_shop_item", None)]
+                    if selected_shop_item.buy <= character.money:
+                        textbutton "Buy for $[selected_shop_item.buy]" action [AddToSet(inventory, selected_shop_item), Function(character.subMoney, selected_shop_item.buy), SetVariable("selected_shop_item", None)]
                     else:
                         label "You do not have enough $ to buy." text_size 25 text_color "#FF0000"
                 elif isinstance(selected_shop_item, Book):
-                    if selected_shop_item.buy <= player.money:
-                        textbutton "Buy for $[selected_shop_item.buy]" action [AddToSet(inventory, selected_shop_item), RemoveFromSet(shop, selected_shop_item), Function(player.subMoney, selected_shop_item.buy), SetVariable("selected_shop_item", None)]
+                    if selected_shop_item.buy <= character.money:
+                        textbutton "Buy for $[selected_shop_item.buy]" action [AddToSet(inventory, selected_shop_item), RemoveFromSet(shop, selected_shop_item), Function(character.subMoney, selected_shop_item.buy), SetVariable("selected_shop_item", None)]
                     else:
                         label "You do not have enough $ to buy." text_size 25 text_color "#FF0000"
                 else:
-                    if selected_shop_item.buy <= player.money:
-                        textbutton "Buy for $[selected_shop_item.buy]" action [Function(inventory.append, selected_shop_item), Function(player.subMoney, selected_shop_item.buy), SetVariable("selected_shop_item", None)]
+                    if selected_shop_item.buy <= character.money:
+                        textbutton "Buy for $[selected_shop_item.buy]" action [Function(inventory.append, selected_shop_item), Function(character.subMoney, selected_shop_item.buy), SetVariable("selected_shop_item", None)]
                     else:
                         label "You do not have enough $ to buy." text_size 25 text_color "#FF0000"
 
