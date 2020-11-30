@@ -1139,9 +1139,10 @@ label weekly_focus_5:
 label coworker_needs_help:
 
     scene office_background
-    show coworker_happy at left
+    show coworker_happy at center
     a "Hi! My name is Adrian. I don't think we've met before."
 
+    scene office_background
     show main_happy at center
     r "Hi! My name is Sylvie. It's nice to meet you. Which department are you from?"
 
