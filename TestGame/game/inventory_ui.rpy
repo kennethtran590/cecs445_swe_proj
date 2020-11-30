@@ -138,4 +138,4 @@ screen show_inventory:
     vbox:
         spacing 5
         imagebutton idle "bag" action ShowMenu("inventory_screen")
-        imagebutton idle "shop" action ShowMenu("shop_screen")
+        #imagebutton idle "shop" action ShowMenu("shop_screen")
