@@ -356,7 +356,7 @@ label training_with_mentor:
 
     show office_background
 
-    show sylvie blue giggle at center
+    show main_v_happy at center
     with dissolve
     r "Thank you for the opportunity!"
 
@@ -388,7 +388,7 @@ label ohno:
 
     m "You must be kidding, right?"
 
-    show sylvie blue surprised at center
+    show main_happy at center
     r "Ah..."
 
     scene office_background
@@ -467,7 +467,7 @@ label not_correct:
 # Where the script left off
 label after_menu_1:
     scene office_background
-    show sylvie blue giggle at center
+    show main_v_happy at center
     with dissolve
     "I'll continue to do my best for any other pop quizzes I may have!"
 
