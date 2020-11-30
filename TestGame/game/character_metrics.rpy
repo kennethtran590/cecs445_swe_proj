@@ -83,48 +83,49 @@ init python:
 
     #character class that holds all metrics
     class character_metrics:
-        week = [0,0,0,0,0] # exp, money, stress, productivity, skills
-        exp = 0
-        money = 0
-        stressLvl = 0
-        product = 0
-        level = 1
-        skills = 0
+        def __init__(self):
+            self.exp = 0
+            self.money = 0
+            self.stressLvl = 0
+            self.product = 0
+            self.level = 1
+            self.skills = 0
+            #item attributes
+            self.keyboard = None
+            self.chair = None
+            self.mouse = None
+            self.monitor = None
+
         # update metrics
         def updateExperience(self, level):
-            exp = level
-            week[0] += level
+            self.exp = level
         def updateCurrency(self, level):
-            money = level
-            week[1] += level
+            self.money = level
         def updateStress(self, level):
-            stressLvl= level
-            week[2] += level
+            self.stressLvl= level
         def updateProductivity(self, level):
-            product = level
-            week[3] += level
+            self.product = level
         def updateTech(self, level):
-            skills = level
-            week[4] += level
+            self.skills = level
          #return metrics
         def returnExperience():
-            return this.exp
+            return self.exp
         def returnCurrency():
-            return this.money
+            return self.money
         def returnStress():
-            return this.stressLvl
+            return self.stressLvl
         def returnProductivity():
-            return this.product
+            return self.product
         def updates():
 
-            if exp > 5000:
-                exp =5000
-            if stressLvl > 50:
-                stressLvl += random.randint(1,20)
-            if product > 250:
-                product = 250
-            if skills > 250:
-                skills = 250
+            if self.exp > 5000:
+                self.exp =5000
+            if self.stressLvl > 50:
+                self.stressLvl += random.randint(1,20)
+            if self.product > 250:
+                self.product = 250
+            if self.skills > 250:
+                self.skills = 250
 
         def returnWeek():
             endOfWeek = week
@@ -165,14 +166,79 @@ init python:
 
         def getMaxExpPerLevel(self):
             if (self.level == 1):
-                return 1000;
+                return "1000";
             if (self.level == 2):
-                return 2000;
+                return "2000";
             if (self.level == 3):
-                return 3000;
+                return "3000";
             if (self.level == 4):
-                return 1000;
+                return "1000";
             if (self.level == 5):
-                return 5000;
+                return "5000";
 
+        #item methods
+        def addProd(self, amount):
+            self.product += amount
+            if self.product > 250:
+                self.product = 250
+
+        def subStress(self, amount):
+            self.stressLvl -= amount
+            if self.stressLvl < 0:
+                self.stressLvl = 0
+
+        def addSkills(self, amount):
+            self.skills += amount
+            if self.skills > 250:
+                self.skills = 250
+
+        def addMoney(self, amount):
+            self.money += amount
+
+        def subMoney(self, amount):
+            self.money = self.money - amount
+
+        def equip_keyboard(self, keyboard):
+            if(self.keyboard != None):
+                self.unequip_keyboard()
+            self.keyboard = keyboard
+            self.product += keyboard.prod
+
+        def unequip_keyboard(self):
+            if (self.keyboard != None):
+                self.product -= self.keyboard.prod
+                self.keyboard = None
+
+        def equip_mouse(self, mouse):
+            if(self.mouse != None):
+                self.unequip_mouse()
+            self.mouse = mouse
+            self.product += mouse.prod
+
+        def unequip_mouse(self):
+            if (self.mouse != None):
+                self.product -= self.mouse.prod
+                self.mouse = None
+
+        def equip_chair(self, chair):
+            if(self.chair != None):
+                self.unequip_chair()
+            self.chair = chair
+            self.product += chair.prod
+
+        def unequip_chair(self):
+            if (self.chair != None):
+                self.product -= self.chair.prod
+                self.chair = None
+
+        def equip_monitor(self, monitor):
+            if(self.monitor != None):
+                self.unequip_monitor()
+            self.monitor = monitor
+            self.product += monitor.prod
+
+        def unequip_monitor(self):
+            if (self.monitor != None):
+                self.product -= self.monitor.prod
+                self.monitor = None
     character = character_metrics()
